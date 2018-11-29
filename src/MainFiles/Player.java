@@ -7,8 +7,7 @@ import java.awt.*;
 public class Player extends jslObject {
 
     public Player(float x, float y, float w, float h) {
-        setPosition(x, y);
-        setSize(w, h);
+        super(x, y, w, h);
     }
 
     public void update(float et) {

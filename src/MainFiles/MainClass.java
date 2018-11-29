@@ -14,7 +14,7 @@ public class MainClass extends jslEngine {
     private Player player;
     private Shotgun shotgun;
     private Camera camera;
-
+    private Map map;
 
     private MainClass() {
         start("Zombies", WW, WH);
@@ -29,6 +29,7 @@ public class MainClass extends jslEngine {
 
         camera = new Camera(player);
         shotgun = new Shotgun(player);
+        map = new Map(jsl);
     }
 
     protected void update(float et) {
