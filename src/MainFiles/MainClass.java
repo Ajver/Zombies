@@ -16,11 +16,15 @@ public class MainClass extends jslEngine {
     private Camera camera;
     private Map map;
 
+    public static Texture tex;
+
     private MainClass() {
         start("Zombies", WW, WH);
     }
 
     protected void onCreate() {
+        (new Texture()).loadTextures();
+
         WW = WW();
         WH = WH();
         player = new Player(WW() * 0.5f, WH() * 0.5f, 32, 32);
