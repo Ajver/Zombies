@@ -8,30 +8,29 @@ import java.awt.Color;
 
 public class MainClass extends jslEngine {
 
+    public static int WW = 1000, WH = 600;
+
     private Player player;
+    private Camera camera;
+
 
     private MainClass() {
-        start("Zombies", 1000, 600);
-
-        jslVector2 v1, v2;
-
-        v2 = new jslVector2(3, 5);
-
-        v1 = new jslVector2(-1, 2);
-        System.out.println(v2.getX() + " | " + v2.getY());
-
-        v1.normalize();
-        System.out.println(v1.getX() + " | " + v1.getY());
+        start("Zombies", WW, WH);
     }
 
     protected void onCreate() {
+        WW = WW();
+        WH = WH();
         player = new Player(WW() * 0.5f, WH() * 0.5f, 32, 32);
         jsl.add(player);
         jsl.add(new PlayerController(player, 350.0f));
+
+        camera = new Camera(player);
     }
 
     protected void update(float et) {
-
+        camera.update(et);
+        jsl.setTranslate(-camera.getX(), -camera.getY());
     }
 
     protected void render(Graphics g) {
