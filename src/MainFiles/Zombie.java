@@ -1,5 +1,6 @@
 package MainFiles;
 
+import jslEngine.jslLabel;
 import jslEngine.jslObject;
 import jslEngine.jslVector2;
 
@@ -18,6 +19,7 @@ public class Zombie extends jslObject {
         this.vel = vel;
         this.player = player;
         this.setRotateToCenter();
+        this.setLabel(jslLabel.ZOMBIE);
     }
 
     public void update(float et) {

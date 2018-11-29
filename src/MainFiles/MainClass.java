@@ -17,14 +17,12 @@ public class MainClass extends jslEngine {
     private Camera camera;
     private Map map;
 
-    public static Texture tex;
-
     private MainClass() {
         start("Zombies", WindowType.jslFullscreen);
     }
 
     protected void onCreate() {
-        (new Texture()).loadTextures();
+        Texture.loadTextures();
 
         WW = WW();
         WH = WH();

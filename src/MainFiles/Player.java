@@ -1,5 +1,6 @@
 package MainFiles;
 
+import jslEngine.jslLabel;
 import jslEngine.jslObject;
 
 import java.awt.*;
@@ -11,6 +12,7 @@ public class Player extends jslObject {
 
     public Player(float x, float y, float w, float h) {
         super(x, y, w, h);
+        this.setLabel(jslLabel.PLAYER);
         this.setRotateToCenter();
     }
 

@@ -11,6 +11,7 @@ public class jslObject {
     protected float velX, velY, velR;
     protected float rotate, rotateX, rotateY;
     protected float translateX, translateY;
+    protected jslLabel label;
     public boolean hover = false;
     public jslObject() { this(0, 0); }
     public jslObject(float x, float y) { this(0, 0, 32, 32); }
@@ -160,6 +161,8 @@ public class jslObject {
         if(px >= getX()) if(px <= getX()+getW()) if(py >= getY()) return py <= getY()+getH();
         return false;
     }
+    public void setLabel(jslLabel l) { this.label = l; }
+    public jslLabel getLabel() { return this.label; }
     public void onEnter() {}
     public void onLeave() {}
     public void onPress() {}
