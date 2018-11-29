@@ -78,6 +78,6 @@ public class Shotgun {
         float dx = this.mx - MainClass.WW * 0.5f;
         float dy = this.my - MainClass.WH * 0.5f;
         float theta = (float)Math.atan2(dx, dy);
-        player.setTheta(2*(float)Math.PI - theta);
+        player.setRotate(2*(float)Math.PI - theta);
     }
 }

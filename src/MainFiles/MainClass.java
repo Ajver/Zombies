@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 
 public class MainClass extends jslEngine {
 
@@ -34,6 +35,11 @@ public class MainClass extends jslEngine {
         camera = new Camera(player);
         shotgun = new Shotgun(player, jsl);
         map = new Map(jsl);
+
+        Random r = new Random();
+        for(int i=0; i<3; i++) {
+            jsl.add(new Zombie(r.nextInt(500), r.nextInt(500), 32, 32, 100.0f, player));
+        }
     }
 
     protected void update(float et) {

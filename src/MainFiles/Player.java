@@ -11,6 +11,7 @@ public class Player extends jslObject {
 
     public Player(float x, float y, float w, float h) {
         super(x, y, w, h);
+        this.setRotateToCenter();
     }
 
     public void update(float et) {}
@@ -24,10 +25,5 @@ public class Player extends jslObject {
 //        g.fillRect((int)(getX() + getW() * 0.5f - 4), (int)(getY() - getH() * 0.5f), 8, 32);
 
         g.drawImage(texture, (int)getX(), (int)getY(), (int)getW(), (int)getH(), null);
-    }
-
-    public void setTheta(float t) {
-        this.setRotate(t);
-        this.setRotateToCenter();
     }
 }
