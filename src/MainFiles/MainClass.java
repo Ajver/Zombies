@@ -32,7 +32,7 @@ public class MainClass extends jslEngine {
         jsl.add(new PlayerController(player, 350.0f));
 
         camera = new Camera(player);
-        shotgun = new Shotgun(player);
+        shotgun = new Shotgun(player, jsl);
         map = new Map(jsl);
     }
 
@@ -47,10 +47,15 @@ public class MainClass extends jslEngine {
         shotgun.render(g);
     }
 
+    protected void onMousePressed(MouseEvent e) {
+        shotgun.onPress(e);
+    }
+    protected void onMouseReleased(MouseEvent e) {
+        shotgun.onRelease(e);
+    }
     protected void onMouseMoved(MouseEvent e) {
         shotgun.onMove(e);
     }
-
     protected void onMouseDragged(MouseEvent e) {
         shotgun.onMove(e);
     }

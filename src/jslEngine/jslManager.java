@@ -33,7 +33,15 @@ public class jslManager {
     public float getTranslateY() { return (isTranslating ? translateY : 0); }
     public void setIsTranslating(boolean flag) { this.isTranslating = flag; }
     public boolean getIsTranslating(boolean flag) { return this.isTranslating; }
-    public void update(float et) { if(autoUpdate) { for(jslObject o : objects) { o.update(et); } } }
+    public void update(float et) {
+        if(autoUpdate) {
+            for(jslObject o : objects) {
+                o.beforeUpdate(et);
+                o.update(et);
+                o.afterUpdate(et);
+            }
+        }
+    }
     public void render(Graphics g) {
         if(autoRender) {
             if(autoClearScreen) {

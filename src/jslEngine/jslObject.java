@@ -122,6 +122,8 @@ public class jslObject {
     public float getY() { return y + (isTranslating ? translateY : 0); }
     public float getW() { return w; }
     public float getH() { return h; }
+    public float getCenterX() { return getX() + getW() * 0.5f; }
+    public float getCenterY() { return getY() + getH() * 0.5f; }
     public float getVelX() { return velX; }
     public float getVelY() { return velY; }
     public float getVelR() { return velR; }
@@ -130,11 +132,13 @@ public class jslObject {
     public float getRotateY() { return rotateY; }
     public float getTranslateX() { return (isTranslating ? translateX : 0); }
     public float getTranslateY() { return (isTranslating ? translateY : 0); }
-    protected void update(float et) {
+    public void beforeUpdate(float et) {
         x += velX * et;
         y += velY * et;
         rotate += velR * et;
     }
+    protected void update(float et) {}
+    public void afterUpdate(float et) {}
     public void beforeRender(Graphics g) {
         if(rotate != 0.0f) {
             ((Graphics2D)g).rotate(getRotate(), getX() + getRotateX(), getY() + getRotateY());

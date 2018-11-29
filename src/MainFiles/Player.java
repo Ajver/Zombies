@@ -13,10 +13,7 @@ public class Player extends jslObject {
         super(x, y, w, h);
     }
 
-    public void update(float et) {
-        x += velX * et;
-        y += velY * et;
-    }
+    public void update(float et) {}
 
     public void render(Graphics g) {
 //

@@ -251,10 +251,7 @@ public abstract class jslEngine extends Canvas implements Runnable, KeyListener,
                     case M_DRAG:    onMouseDragged(e.mouse);   jsl.mouseDragged(e.mouse);   break;
                 }
             }
-        }catch (Exception e) {
-            System.out.println("error with events list");
-            e.printStackTrace();
-        }
+        }catch (Exception e) {}
         events.clear();
         isExecuting = false;
     }
