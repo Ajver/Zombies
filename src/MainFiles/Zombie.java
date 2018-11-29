@@ -26,7 +26,6 @@ public class Zombie extends jslObject {
         v.multiply(vel);
         setVel(v);
 
-
         float theta = (float)Math.atan2(v.x, v.y);
         setRotate(2*(float)Math.PI - theta);
     }

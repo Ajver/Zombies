@@ -20,7 +20,7 @@ public class MainClass extends jslEngine {
     public static Texture tex;
 
     private MainClass() {
-        start("Zombies", WW, WH);
+        start("Zombies", WindowType.jslFullscreen);
     }
 
     protected void onCreate() {
@@ -64,6 +64,12 @@ public class MainClass extends jslEngine {
     }
     protected void onMouseDragged(MouseEvent e) {
         shotgun.onMove(e);
+    }
+
+    protected void onKeyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            System.exit(144);
+        }
     }
 
     public static void main(String[] args) {
