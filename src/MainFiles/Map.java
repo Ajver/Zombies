@@ -14,23 +14,19 @@ public class Map {
 
         // Horizontal walls
         for(int i=0; i<w; i++) {
-            Block block = new Block(i*bs, 0, bs, bs);
-            block.setLabel(jslLabel.WALL);
+            Block block = new Block(i*bs, 0, bs, bs, jslLabel.WALL);
             jsl.add(block);
 
-            block = new Block(i*bs, h*bs, bs, bs);
-            block.setLabel(jslLabel.WALL);
+            block = new Block(i*bs, h*bs, bs, bs, jslLabel.WALL);
             jsl.add(block);
         }
 
         // Vertical walls
         for(int i=1; i<h; i++) {
-            Block block = new Block(0, i*bs, bs, bs);
-            block.setLabel(jslLabel.WALL);
+            Block block = new Block(0, i*bs, bs, bs, jslLabel.WALL);
             jsl.add(block);
 
-            block = new Block((w-1)*bs, i*bs, bs, bs);
-            block.setLabel(jslLabel.WALL);
+            block = new Block((w-1)*bs, i*bs, bs, bs, jslLabel.WALL);
             jsl.add(block);
         }
     }

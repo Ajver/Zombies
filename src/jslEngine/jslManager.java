@@ -11,6 +11,7 @@ public class jslManager {
     protected boolean isTranslating = true;
     private float translateX = 0, translateY = 0;
     private jslObject clickedOb = null;
+    private LinkedList<jslLabel> renderOrder = new LinkedList<>();
     private LinkedList<jslObject> objects = new LinkedList<>();
     private LinkedList<jslKeyInput> keyInputs = new LinkedList<>();
     public jslManager(jslEngine engine) { this.engine = engine; }
@@ -51,10 +52,22 @@ public class jslManager {
             if(isTranslating) {
                 g.translate((int) translateX, (int) translateY);
             }
-            for (jslObject o : objects) {
-                o.beforeRender(g);
-                o.render(g);
-                o.afterRender(g);
+            if(renderOrder.size() > 0) {
+                for(jslLabel lab : renderOrder) {
+                    for (jslObject o : objects) {
+                        if(o.getLabel() == lab) {
+                            o.beforeRender(g);
+                            o.render(g);
+                            o.afterRender(g);
+                        }
+                    }
+                }
+            }else {
+                for (jslObject o : objects) {
+                    o.beforeRender(g);
+                    o.render(g);
+                    o.afterRender(g);
+                }
             }
             if(isTranslating) {
                 g.translate(-(int) translateX, -(int) translateY);
@@ -167,4 +180,34 @@ public class jslManager {
             }
         }
     }
+    public void addToRenderOrder(jslLabel l) {
+        for(int i=renderOrder.size()-1; i>=0; i--) {
+            if(renderOrder.get(i) == l) {
+                renderOrder.remove(i);
+            }
+        }
+        renderOrder.add(l);
+    }
+    public void setRenderOrder(LinkedList<jslLabel> labels) {
+        renderOrder.clear();
+        for(jslLabel l : labels) {
+            addToRenderOrder(l);
+        }
+        refreshRenderOrder();
+    }
+    public void setRenderOrder(jslLabel... labels) {
+        renderOrder.clear();
+        for(jslLabel l : labels) {
+            addToRenderOrder(l);
+        }
+        refreshRenderOrder();
+    }
+    private void refreshRenderOrder() {
+        for(jslObject o : objects) {
+            if(!renderOrder.contains(o.getLabel())) {
+                addToRenderOrder(o.getLabel());
+            }
+        }
+    }
+    public LinkedList<jslLabel> getRenderOrder() { return this.renderOrder; }
 }

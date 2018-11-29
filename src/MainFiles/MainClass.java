@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
+import java.util.LinkedList;
 import java.util.Random;
 
 public class MainClass extends jslEngine {
@@ -23,6 +24,12 @@ public class MainClass extends jslEngine {
 
     protected void onCreate() {
         Texture.loadTextures();
+
+        jsl.setRenderOrder(
+                jslLabel.GROUND,
+                jslLabel.PLAYER,
+                jslLabel.ZOMBIE,
+                jslLabel.WALL);
 
         WW = WW();
         WH = WH();

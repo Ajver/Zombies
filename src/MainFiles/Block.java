@@ -1,5 +1,6 @@
 package MainFiles;
 
+import jslEngine.jslLabel;
 import jslEngine.jslObject;
 
 import java.awt.*;
@@ -9,8 +10,9 @@ public class Block extends jslObject {
 
     private BufferedImage texture = Texture.blockImg;
 
-    public Block(float x, float y, float w, float h) {
+    public Block(float x, float y, float w, float h, jslLabel label) {
         super(x, y, w, h);
+        this.setLabel(label);
     }
 
     public void render(Graphics g) {

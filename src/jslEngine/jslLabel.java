@@ -3,6 +3,7 @@ package jslEngine;
 public enum jslLabel {
 
     PLAYER,
+    ZOMBIE,
     WALL,
-    ZOMBIE
+    GROUND
 }
