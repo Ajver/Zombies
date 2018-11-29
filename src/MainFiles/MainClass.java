@@ -12,6 +12,16 @@ public class MainClass extends jslEngine {
 
     private MainClass() {
         start("Zombies", 1000, 600);
+
+        jslVector2 v1, v2;
+
+        v2 = new jslVector2(3, 5);
+
+        v1 = new jslVector2(-1, 2);
+        System.out.println(v2.getX() + " | " + v2.getY());
+
+        v1.normalize();
+        System.out.println(v1.getX() + " | " + v1.getY());
     }
 
     protected void onCreate() {

@@ -1,6 +1,7 @@
 package MainFiles;
 
 import jslEngine.jslKeyInput;
+import jslEngine.jslVector2;
 
 import java.awt.event.KeyEvent;
 
@@ -9,11 +10,13 @@ public class PlayerController extends jslKeyInput {
     private Player player;
     private boolean isUp = false, isDown = false, isLeft = false, isRight = false;
     private float vel;
+    private jslVector2 vVel;
     private final float sqrt2 = 1.41421f;
 
     public PlayerController(Player player, float vel) {
         this.player = player;
         this.vel = vel;
+        vVel = new jslVector2();
     }
 
     public void onPress(KeyEvent e) {
@@ -39,6 +42,8 @@ public class PlayerController extends jslKeyInput {
                 player.setVelX(vel);
                 break;
         }
+
+        setVel();
     }
 
     public void onRelease(KeyEvent e) {
@@ -80,5 +85,15 @@ public class PlayerController extends jslKeyInput {
                 }
                 break;
         }
+
+        setVel();
+    }
+
+    private void setVel() {
+        vVel.setX(isLeft != isRight ? (isLeft ? -1 : 1) : 0);
+        vVel.setY(isUp != isDown ? (isUp ? -1 : 1) : 0);
+        vVel.normalize();
+        vVel.multiply(vel);
+        player.setVel(vVel);
     }
 }
