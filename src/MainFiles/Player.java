@@ -6,8 +6,6 @@ import java.awt.*;
 
 public class Player extends jslObject {
 
-    private float theta;
-
     public Player(float x, float y, float w, float h) {
         setPosition(x, y);
         setSize(w, h);
@@ -19,6 +17,7 @@ public class Player extends jslObject {
     }
 
     public void render(Graphics g) {
+
         g.setColor(new Color(135, 111, 255));
         g.fillOval((int)getX(), (int)getY(), (int)getW(), (int)getH());
 
@@ -27,7 +26,7 @@ public class Player extends jslObject {
     }
 
     public void setTheta(float t) {
-        this.theta = t;
         this.setRotate(t);
+        this.setRotateToCenter();
     }
 }
