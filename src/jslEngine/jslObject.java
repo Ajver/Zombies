@@ -11,7 +11,7 @@ public class jslObject {
     protected float velX, velY, velR;
     protected float rotate, rotateX, rotateY;
     protected float translateX, translateY;
-    protected jslLabel label;
+    protected jslLabel label = jslLabel.DEFAULT;
     public boolean hover = false;
     public jslObject() { this(0, 0); }
     public jslObject(float x, float y) { this(0, 0, 32, 32); }

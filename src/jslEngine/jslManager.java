@@ -141,7 +141,7 @@ public class jslManager {
             clickedOb = null;
         }
     }
-    public void add(jslObject o) { objects.add(o); }
+    public void add(jslObject o) { objects.add(o); refreshRenderOrder(); }
     public LinkedList<jslObject> getObjects() { return objects; }
     public jslObject getObject(int i) { return objects.get(i); }
     public void removeAllObjects() { objects.clear(); }

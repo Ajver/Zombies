@@ -56,6 +56,9 @@ public class MainClass extends jslEngine {
 
     protected void render(Graphics g) {
         shotgun.render(g);
+
+        g.setColor(new Color(255, 255,255));
+        g.drawString("FPS: "+getFpsCount(), 20, 20);
     }
 
     protected void onMousePressed(MouseEvent e) {
