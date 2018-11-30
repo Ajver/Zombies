@@ -55,8 +55,6 @@ public class Shotgun {
             bullet.setVel(v.x, v.y);
 
             jsl.add(bullet);
-
-            System.out.println(v.x + " | " + v.y);
         }
     }
 
