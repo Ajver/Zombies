@@ -20,6 +20,7 @@ public class MainClass extends jslEngine {
 
     private MainClass() {
         start("Zombies", WindowType.jslFullscreen);
+        setAntialiasing(true);
     }
 
     protected void onCreate() {
