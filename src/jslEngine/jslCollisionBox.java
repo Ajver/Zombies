@@ -25,13 +25,6 @@ public class jslCollisionBox {
         float toUp = o.getY() - (other.getY() - o.getH());
         float toDown = (other.getY() + other.getH()) - o.getY();
 
-        if(other.getLabel() == jslLabel.PLAYER) {
-            System.out.println("To Left:  " + toLeft);
-            System.out.println("To Right: " + toRight);
-            System.out.println("To Up:    " + toUp);
-            System.out.println("To Down:  " + toDown);
-        }
-
         if(toLeft < toRight) {
             if(toLeft < toUp) {
                 if(toLeft < toDown) {
