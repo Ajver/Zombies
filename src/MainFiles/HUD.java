@@ -1,5 +1,6 @@
 package MainFiles;
 
+import jslEngine.jslSound;
 import jslEngine.jslTimer;
 
 import java.awt.*;

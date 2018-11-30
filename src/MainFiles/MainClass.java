@@ -57,8 +57,9 @@ public class MainClass extends jslEngine {
         for(int i=0; i<3; i++) {
             jsl.add(new Zombie(r.nextInt(500), r.nextInt(500), creatureSize, creatureSize, 100.0f, player));
         }
-    }
 
+    }
+    
     protected void update(float et) {
         camera.update(et);
         jsl.setTranslate(-camera.getX(), -camera.getY());
@@ -72,7 +73,7 @@ public class MainClass extends jslEngine {
         HUD.render(g);
 
         g.setColor(new Color(255, 255,255));
-        g.drawString("FPS: "+getFpsCount(), 20, 20);
+        g.drawString("FPS: "+getFpsCount(), 20, 50);
     }
 
     protected void onMousePressed(MouseEvent e) {
