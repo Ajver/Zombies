@@ -169,6 +169,7 @@ public class jslObject {
     }
     public void setLabel(jslLabel l) { this.label = l; }
     public jslLabel getLabel() { return this.label; }
+    public boolean is(jslLabel l) { return getLabel() == l; }
     public void onEnter() {}
     public void onLeave() {}
     public void onPress() {}

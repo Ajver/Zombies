@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aa3ca37-3d6c-484d-8628-87d3c5bf20e3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/jslEngine/jslTimer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zombies/MainFiles/HUD.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zombies/MainFiles/HUD.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zombies/MainFiles/Shotgun.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zombies/MainFiles/Shotgun.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainFiles/HUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFiles/HUD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainFiles/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFiles/MainClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainFiles/Shotgun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFiles/Shotgun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jslEngine/jslManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jslEngine/jslManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jslEngine/jslObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jslEngine/jslObject.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,25 +34,25 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="groovy" value="2" />
-          <entry key="java" value="46" />
+          <entry key="java" value="48" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Groovy" value="2" />
-          <entry key="JAVA" value="46" />
+          <entry key="JAVA" value="48" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="groovy" value="21" />
-          <entry key="java" value="10737" />
+          <entry key="java" value="11023" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="21" />
-          <entry key="JAVA" value="10737" />
+          <entry key="JAVA" value="11023" />
         </counts>
       </usages-collector>
     </session>
@@ -89,7 +84,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainFiles/MainClass.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="356">
@@ -97,6 +92,15 @@
               <folding>
                 <element signature="method#onKeyPressed#0;class#MainClass#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/jslEngine/jslManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="356">
+              <caret line="209" column="50" selection-start-line="209" selection-start-column="50" selection-end-line="209" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -173,6 +177,7 @@
     <findStrings>
       <find>WW(</find>
       <find>Math.abs(</find>
+      <find>labe</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -192,10 +197,8 @@
         <option value="$PROJECT_DIR$/src/MainFiles/Block.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/Map.java" />
         <option value="$PROJECT_DIR$/src/jslEngine/jslCollision.java" />
-        <option value="$PROJECT_DIR$/src/jslEngine/jslObject.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/Player.java" />
         <option value="$PROJECT_DIR$/src/jslEngine/jslLabel.java" />
-        <option value="$PROJECT_DIR$/src/jslEngine/jslManager.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/Bullet.java" />
         <option value="$PROJECT_DIR$/src/jslEngine/jslCollisionBox.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/Zombie.java" />
@@ -203,12 +206,14 @@
         <option value="$PROJECT_DIR$/src/jslEngine/jslTimer.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/HUD.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/MainClass.java" />
+        <option value="$PROJECT_DIR$/src/jslEngine/jslObject.java" />
+        <option value="$PROJECT_DIR$/src/jslEngine/jslManager.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="188" />
-    <option name="y" value="-9" />
+    <option name="x" value="323" />
+    <option name="y" value="-8" />
     <option name="width" value="1280" />
     <option name="height" value="709" />
   </component>
@@ -258,7 +263,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/Git repositories/Zombies/src/jslEngine/jslVector2.java" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543610374853" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543611094681" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Groovy JUnit" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Groovy JUnit" value="groovy.util.GroovyTestCase" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -437,13 +442,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/jslEngine/jslCollision.java" />
-    <entry file="file://$PROJECT_DIR$/src/jslEngine/jslObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1325">
-          <caret line="54" column="30" lean-forward="true" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MainFiles/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -451,13 +449,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jslEngine/jslManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="48" column="17" lean-forward="true" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -558,6 +549,20 @@
           <folding>
             <element signature="method#onKeyPressed#0;class#MainClass#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jslEngine/jslObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="171" column="61" lean-forward="true" selection-start-line="171" selection-start-column="61" selection-end-line="171" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jslEngine/jslManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="209" column="50" selection-start-line="209" selection-start-column="50" selection-end-line="209" selection-end-column="50" />
         </state>
       </provider>
     </entry>
