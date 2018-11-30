@@ -1,8 +1,6 @@
 package MainFiles;
 
-import jslEngine.jslLabel;
-import jslEngine.jslManager;
-import jslEngine.jslObject;
+import jslEngine.*;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -17,7 +15,9 @@ public class Player extends jslObject {
         this.setRotateToCenter();
     }
 
-    public void update(float et) {}
+    public void update(float et) {
+
+    }
 
     public void onCollision(jslObject other) {
         if(other.getLabel() != jslLabel.BULLET) {

@@ -1,8 +1,6 @@
 package MainFiles;
 
-import jslEngine.jslLabel;
-import jslEngine.jslObject;
-import jslEngine.jslVector2;
+import jslEngine.*;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -18,7 +16,7 @@ public class Zombie extends jslObject {
     private float hitRate = 1.0f;
     private float timer = 1.0f / hitRate;
     private boolean isReady = false;
-
+    
     public Zombie(float x, float y, float w, float h, float vel, Player player) {
         super(x, y, w, h);
         this.vel = vel;

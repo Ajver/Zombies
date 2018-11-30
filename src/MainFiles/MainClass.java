@@ -57,9 +57,8 @@ public class MainClass extends jslEngine {
         for(int i=0; i<3; i++) {
             jsl.add(new Zombie(r.nextInt(500), r.nextInt(500), creatureSize, creatureSize, 100.0f, player));
         }
-
     }
-    
+
     protected void update(float et) {
         camera.update(et);
         jsl.setTranslate(-camera.getX(), -camera.getY());

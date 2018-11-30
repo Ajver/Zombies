@@ -38,7 +38,7 @@ public class jslSound {
     }
 
     // Start from begin
-    public boolean restart() {
+    public boolean replay() {
         return play(path);
     }
 
@@ -74,7 +74,11 @@ public class jslSound {
         }
     }
 
-    private static float limit(FloatControl control, float level) {
+    public void setLevel(float level) {
+        this.level = level;
+    }
+
+    private float limit(FloatControl control, float level) {
         level *= 86;
         level -= 70;
         return Math.min(control.getMaximum(), Math.max(control.getMinimum(), level));
