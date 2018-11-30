@@ -40,7 +40,7 @@ public class MainClass extends jslEngine {
 
         WW = WW();
         WH = WH();
-        player = new Player(WW() * 0.5f, WH() * 0.5f, 32, 32);
+        player = new Player(WW() * 0.5f, WH() * 0.5f, 64, 64);
         jsl.add(player);
         jsl.add(new PlayerController(player, 350.0f));
 
@@ -50,7 +50,7 @@ public class MainClass extends jslEngine {
 
         Random r = new Random();
         for(int i=0; i<3; i++) {
-            jsl.add(new Zombie(r.nextInt(500), r.nextInt(500), 32, 32, 100.0f, player));
+            jsl.add(new Zombie(r.nextInt(500), r.nextInt(500), 64, 64, 100.0f, player));
         }
     }
 
