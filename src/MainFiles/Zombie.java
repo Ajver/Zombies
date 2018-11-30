@@ -1,6 +1,7 @@
 package MainFiles;
 
 import jslEngine.jslLabel;
+import jslEngine.jslManager;
 import jslEngine.jslObject;
 import jslEngine.jslVector2;
 
@@ -30,6 +31,15 @@ public class Zombie extends jslObject {
 
         float theta = (float)Math.atan2(v.x, v.y);
         setRotate(2*(float)Math.PI - theta);
+    }
+
+    public void onCollision(jslObject other) {
+        if(other.getLabel() != jslLabel.BULLET) {
+            collisionBox.bound(other);
+            if (other.getLabel() == jslLabel.PLAYER) {
+//            collisionBox.bound(other);
+            }
+        }
     }
 
     public void render(Graphics g) {

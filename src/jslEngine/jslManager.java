@@ -36,9 +36,18 @@ public class jslManager {
     public boolean getIsTranslating(boolean flag) { return this.isTranslating; }
     public void update(float et) {
         if(autoUpdate) {
-            for(jslObject o : objects) {
+            for(int i=objects.size()-1; i>=0; i--) {
+                jslObject o = objects.get(i);
                 o.beforeUpdate(et);
                 o.update(et);
+
+                for(int j=objects.size()-1; j>=0; j--) {
+                    jslObject other = objects.get(j);
+                    if(other != o) {
+                        o.collisionBox.collision(other);
+                    }
+                }
+
                 o.afterUpdate(et);
             }
         }

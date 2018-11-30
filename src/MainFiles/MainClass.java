@@ -27,9 +27,11 @@ public class MainClass extends jslEngine {
 
         jsl.setRenderOrder(
                 jslLabel.GROUND,
+                jslLabel.BULLET,
                 jslLabel.PLAYER,
                 jslLabel.ZOMBIE,
-                jslLabel.WALL);
+                jslLabel.WALL,
+                jslLabel.DEFAULT);
 
         WW = WW();
         WH = WH();

@@ -1,6 +1,7 @@
 package MainFiles;
 
 import jslEngine.jslLabel;
+import jslEngine.jslManager;
 import jslEngine.jslObject;
 
 import java.awt.*;
@@ -17,6 +18,12 @@ public class Player extends jslObject {
     }
 
     public void update(float et) {}
+
+    public void onCollision(jslObject other) {
+        if(other.getLabel() != jslLabel.BULLET) {
+            collisionBox.bound(other);
+        }
+    }
 
     public void render(Graphics g) {
 //

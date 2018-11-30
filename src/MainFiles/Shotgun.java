@@ -51,7 +51,7 @@ public class Shotgun {
             v.normalize();
             v.multiply(1200.0f);
 
-            Bullet bullet = new Bullet(player.getCenterX(), player.getCenterY(), 8,8);
+            Bullet bullet = new Bullet(player.getCenterX(), player.getCenterY(), 8,8, jsl);
             bullet.setVel(v.x, v.y);
 
             jsl.add(bullet);

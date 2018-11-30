@@ -13,6 +13,7 @@ public class jslObject {
     protected float translateX, translateY;
     protected jslLabel label = jslLabel.DEFAULT;
     public boolean hover = false;
+    public jslCollisionBox collisionBox = new jslCollisionBox(this);
     public jslObject() { this(0, 0); }
     public jslObject(float x, float y) { this(0, 0, 32, 32); }
     public jslObject(float x, float y, float w, float h) {
@@ -21,6 +22,7 @@ public class jslObject {
         this.onCreate();
     }
     protected void onCreate() {}
+    protected void onCollision(jslObject other) {}
     public void setPosition(float x, float y) {
         setX(x);
         setY(y);
@@ -48,6 +50,10 @@ public class jslObject {
         if(isMinH) { h = Math.max(h, minH); }
         if(isMaxH) { h = Math.min(h, maxH); }
         this.h = h;
+    }
+    public void move(float x, float y) {
+        this.setX(this.x + x);
+        this.setY(this.y + y);
     }
     public void setMaxX(boolean flag) { this.isMaxX = flag; }
     public void setMaxY(boolean flag) { this.isMaxY = flag; }

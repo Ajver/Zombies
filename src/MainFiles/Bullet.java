@@ -1,17 +1,36 @@
 package MainFiles;
 
+import jslEngine.jslLabel;
+import jslEngine.jslManager;
 import jslEngine.jslObject;
+import jslEngine.jslVector2;
 
 import java.awt.*;
 
 public class Bullet extends jslObject {
 
-    public Bullet(float x, float y, float w, float h) {
+    private jslManager jsl;
+
+    public Bullet(float x, float y, float w, float h, jslManager jsl) {
         super(x, y, w, h);
+        this.setLabel(jslLabel.BULLET);
+        this.jsl = jsl;
     }
 
     public void update(float et) {
 
+    }
+
+    public void onCollision(jslObject other) {
+        if(other.getLabel() == jslLabel.ZOMBIE) {
+            jslVector2 v = new jslVector2(getVelX(), getVelY());
+            v.normalize();
+            v.multiply(16);
+            other.move(v.x, v.y);
+            jsl.removeObject(this);
+        }else if(other.getLabel() == jslLabel.WALL) {
+            jsl.removeObject(this);
+        }
     }
 
     public void render(Graphics g) {
