@@ -76,7 +76,11 @@ public class jslSound {
 
     public void setLevel(float level) {
         this.level = level;
+        FloatControl control = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
+        control.setValue(limit(control,level));
     }
+
+    public float getLevel() { return level; }
 
     private float limit(FloatControl control, float level) {
         level *= 86;
