@@ -41,7 +41,11 @@ public class MainClass extends jslEngine {
 
         WW = WW();
         WH = WH();
-        player = new Player(WW() * 0.5f, WH() * 0.5f, 64, 64);
+
+        float creatureSize = WW() * 0.035f;
+        System.out.println("creature size: " + creatureSize);
+
+        player = new Player(WW() * 0.5f, WH() * 0.5f, creatureSize, creatureSize);
         jsl.add(player);
         jsl.add(new PlayerController(player, 350.0f));
 
@@ -51,15 +55,15 @@ public class MainClass extends jslEngine {
 
         Random r = new Random();
         for(int i=0; i<3; i++) {
-            jsl.add(new Zombie(r.nextInt(500), r.nextInt(500), 64, 64, 100.0f, player));
+            jsl.add(new Zombie(r.nextInt(500), r.nextInt(500), creatureSize, creatureSize, 100.0f, player));
         }
     }
 
     protected void update(float et) {
         camera.update(et);
         jsl.setTranslate(-camera.getX(), -camera.getY());
-
         shotgun.update(et);
+        HUD.update(et);
     }
 
     protected void render(Graphics g) {
@@ -67,8 +71,8 @@ public class MainClass extends jslEngine {
 
         HUD.render(g);
 
-//        g.setColor(new Color(255, 255,255));
-//        g.drawString("FPS: "+getFpsCount(), 20, 20);
+        g.setColor(new Color(255, 255,255));
+        g.drawString("FPS: "+getFpsCount(), 20, 20);
     }
 
     protected void onMousePressed(MouseEvent e) {

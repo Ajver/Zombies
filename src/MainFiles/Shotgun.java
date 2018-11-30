@@ -45,16 +45,18 @@ public class Shotgun {
 
     private void shoot() {
         if(ready) {
-            ready = false;
+            if(HUD.getAmmo()) {
+                ready = false;
 
-            jslVector2 v = new jslVector2(this.mx - MainClass.WW * 0.5f, this.my - MainClass.WH * 0.5f);
-            v.normalize();
-            v.multiply(1200.0f);
+                jslVector2 v = new jslVector2(this.mx - MainClass.WW * 0.5f, this.my - MainClass.WH * 0.5f);
+                v.normalize();
+                v.multiply(1200.0f);
 
-            Bullet bullet = new Bullet(player.getCenterX(), player.getCenterY(), 8,8, jsl);
-            bullet.setVel(v.x, v.y);
+                Bullet bullet = new Bullet(player.getCenterX(), player.getCenterY(), 8, 8, jsl);
+                bullet.setVel(v.x, v.y);
 
-            jsl.add(bullet);
+                jsl.add(bullet);
+            }
         }
     }
 
