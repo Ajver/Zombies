@@ -64,6 +64,10 @@ public class HUD {
         }
     }
 
+    public static void addMagazine(int nr) {
+        magazines += nr;
+    }
+
     public static float getHp() { return hp;}
     public static float getMaxHp() { return maxHp;}
 

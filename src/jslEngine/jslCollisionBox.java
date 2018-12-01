@@ -6,6 +6,7 @@ public class jslCollisionBox {
 
     private jslObject o;
     private Rectangle selfBounds = null;
+    private boolean hasBounds = true;
 
     public jslCollisionBox(jslObject o) {
         this.o = o;
@@ -20,6 +21,13 @@ public class jslCollisionBox {
     }
 
     public void bound(jslObject other) {
+        if(!this.hasBounds) {
+            return;
+        }
+        if(!other.collisionBox.hasBounds()) {
+            return;
+        }
+
         float toLeft = o.getX() - (other.getX() - o.getW());
         float toRight = (other.getX() + other.getW()) - o.getX();
         float toUp = o.getY() - (other.getY() - o.getH());
@@ -56,6 +64,9 @@ public class jslCollisionBox {
         }
     }
 
+    public void setHasBounds(boolean flag) { this.hasBounds = flag; }
+
+    public boolean hasBounds() { return hasBounds; }
     public Rectangle getBounds() {
         return new Rectangle((int)o.getX(), (int)o.getY(), (int)o.getW(), (int)o.getH());
     }

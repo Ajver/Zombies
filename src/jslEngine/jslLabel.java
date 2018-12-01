@@ -7,5 +7,6 @@ public enum jslLabel {
     ZOMBIE,
     WALL,
     GROUND,
-    BULLET
+    BULLET,
+    AMMO
 }

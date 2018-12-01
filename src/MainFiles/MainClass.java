@@ -17,6 +17,7 @@ public class MainClass extends jslEngine {
     private Shotgun shotgun;
     private Camera camera;
     private Map map;
+    private ItemSpawner itemSpawner;
 
     private MainClass() {
         start("Zombies", WindowType.jslFullscreen);
@@ -58,6 +59,8 @@ public class MainClass extends jslEngine {
             jsl.add(new Zombie(r.nextInt(500), r.nextInt(500), creatureSize, creatureSize, 100.0f, player));
         }
 
+        itemSpawner = new ItemSpawner(jsl);
+
         jslCursor.setCursor(jslCursor.MOVE);
     }
 
@@ -66,6 +69,7 @@ public class MainClass extends jslEngine {
         jsl.setTranslate(-camera.getX(), -camera.getY());
         shotgun.update(et);
         HUD.update(et);
+        itemSpawner.update(et);
     }
 
     protected void render(Graphics g) {
