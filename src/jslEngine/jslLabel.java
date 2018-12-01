@@ -9,5 +9,6 @@ public enum jslLabel {
     WALL,
     GROUND,
     BULLET,
+    SPAWNER,
     ITEM
 }

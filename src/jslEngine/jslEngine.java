@@ -34,21 +34,6 @@ public abstract class jslEngine extends Canvas implements Runnable, KeyListener,
     protected void onMouseDragged(MouseEvent e) {}
     protected void onMouseMoved(MouseEvent e) {}
 
-    // Events, when mouse do something on specific jslObject (to override)
-    protected void onMove(jslObject o) {}
-    protected void onDrag(jslObject o) {}
-    protected void onEnter(jslObject o) {}
-    protected void onLeave(jslObject o) {}
-    protected void onPress(jslObject o) {}
-    protected void onRelease(jslObject o) {}
-
-    protected void onMove(jslObject o, MouseEvent e) {}
-    protected void onDrag(jslObject o, MouseEvent e) {}
-    protected void onEnter(jslObject o, MouseEvent e) {}
-    protected void onLeave(jslObject o, MouseEvent e) {}
-    protected void onPress(jslObject o, MouseEvent e) {}
-    protected void onRelease(jslObject o, MouseEvent e) {}
-
     // Functions that may be helpful ( --DO NOT-- override)
     public int WW() { return getWidth(); }
     public int WH() { return getHeight(); }

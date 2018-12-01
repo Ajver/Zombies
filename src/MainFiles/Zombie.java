@@ -4,9 +4,12 @@ import jslEngine.*;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.LinkedList;
 import java.util.Random;
 
 public class Zombie extends jslObject {
+
+    private static LinkedList<Zombie> zombies = new LinkedList<>();
 
     private BufferedImage texture = Texture.zombieImg;
     private Player player;
@@ -22,31 +25,36 @@ public class Zombie extends jslObject {
     private boolean isReady = false;
 
     private jslTimer soundTimer;
-    private jslSound[] zombieSounds = {
-            new jslSound("res/sounds/zombie1.wav"),
-            new jslSound("res/sounds/zombie2.wav"),
-            new jslSound("res/sounds/zombie3.wav"),
-            new jslSound("res/sounds/zombie4.wav")
-    };
+    private jslSound[] zombieSounds = new jslSound[4];
+    private Random r = new Random();
 
-    public Zombie(float x, float y, float w, float h, float vel, Player player, jslManager jsl) {
-        super(x, y, w, h);
-        this.vel = vel;
-        this.player = player;
+    public Zombie(float w, float h, jslManager jsl) {
+        setSize(w, h);
+
+        this.player = (Player)jsl.getObject(jslLabel.PLAYER);
         this.setRotateToCenter();
         this.setLabel(jslLabel.ZOMBIE);
-        this.strange = 10.0f;
         this.jsl = jsl;
+        this.strange = 10.0f;
+        this.vel = 100.0f;
 
-        jsl.add(this.hp = new ZombieHP(50, getW(),getW()*1.5f, 15));
-
-        Random r = new Random();
-        soundTimer = new jslTimer((r.nextInt(1000) + 3000) / 1000.0f);
-        soundTimer.start();
+        soundTimer = new jslTimer((r.nextInt(4) + 3));
 
         for(int i=0; i<zombieSounds.length; i++) {
-            zombieSounds[i].setLevel(0.6f);
+            zombieSounds[i] = new jslSound("res/sounds/zombie" + (i+1) + ".wav");
+            zombieSounds[i].setLevel(0.55f);
         }
+
+        reset(0, 0);
+    }
+
+    public void reset(float x, float y) {
+        setPosition(x, y);
+        jsl.add(this.hp = new ZombieHP(50, getW(),getW()*1.5f, 10));
+        soundTimer.restart();
+//        for(int i=0; i<zombieSounds.length; i++) {
+//            zombieSounds[i].load();
+//        }
     }
 
     public void update(float et) {
@@ -58,9 +66,8 @@ public class Zombie extends jslObject {
         float theta = (float)Math.atan2(v.x, v.y);
         setRotate(2*(float)Math.PI - theta);
 
-        if(soundTimer.update(et)) {
-            Random r = new Random();
-            soundTimer.setDuration((r.nextInt(5000) + 4000) / 1000.0f);
+        if(soundTimer.update()) {
+            soundTimer.setDuration(r.nextInt(5) + 4);
             zombieSounds[r.nextInt(zombieSounds.length)].play();
         }
 
@@ -96,6 +103,7 @@ public class Zombie extends jslObject {
             move(v.x, v.y);
             jsl.removeObject(other);
             if(!hp.addHp(-20)) {
+                zombies.add(this);
                 jsl.removeObject(hp);
                 jsl.removeObject(this);
             }
@@ -106,5 +114,21 @@ public class Zombie extends jslObject {
 
     public void render(Graphics g) {
         g.drawImage(texture, (int)getX(), (int)getY(), (int)getW(), (int)getH(), null);
+    }
+
+    public static void newZombie(jslManager jsl, float x, float y) {
+        if(zombies.isEmpty()) {
+            return;
+        }
+
+        Zombie z = zombies.pop();
+        z.reset(x, y);
+        jsl.add(z);
+    }
+
+    public static void fillZombies(float w, float h, jslManager jsl) {
+        for(int i=0; i<5; i++) {
+            zombies.add(new Zombie(w, h, jsl));
+        }
     }
 }

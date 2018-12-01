@@ -3,8 +3,8 @@ package jslEngine;
 public class jslTimer {
 
     // Animation duration in millis
-    private float duration;
-    private float timer;
+    private long duration;
+    private long timer;
 
     private boolean isRunning = false;
 
@@ -13,12 +13,12 @@ public class jslTimer {
         reset();
     }
 
-    public boolean update(float et) {
+    public boolean update() {
         if(!isRunning) {
             return false;
         }
 
-        if((timer -= et) <= 0) {
+        if(System.currentTimeMillis() >= timer) {
             reset();
             return true;
         }
@@ -32,7 +32,7 @@ public class jslTimer {
     }
 
     public void reset() {
-        timer = duration;
+        timer = System.currentTimeMillis() + duration;
     }
 
     public void stop() {
@@ -40,14 +40,17 @@ public class jslTimer {
     }
 
     public void start() {
-        isRunning = true;
+        if(!isRunning) {
+            reset();
+            isRunning = true;
+        }
     }
 
     public void setDuration(float duration) {
-        this.duration = duration;
+        this.duration = (long)(duration * 1000.0f);
     }
 
     public boolean isRunning() { return isRunning; }
-    public float getDuration() { return duration; }
-    public float getTimer() { return timer; }
+    public float getDuration() { return duration * 0.001f; }
+    public long getTimer() { return timer; }
 }

@@ -15,7 +15,6 @@ public class MainClass extends jslEngine {
     public static float blockSize;
     public static float creatureSize;
 
-
     private Player player;
     private Shotgun shotgun;
     private Camera camera;
@@ -36,6 +35,7 @@ public class MainClass extends jslEngine {
 
         jsl.setRenderOrder(
                 jslLabel.GROUND,
+                jslLabel.SPAWNER,
                 jslLabel.BULLET,
                 jslLabel.ITEM,
                 jslLabel.PLAYER,
@@ -52,13 +52,13 @@ public class MainClass extends jslEngine {
 
         map = new Map(jsl);
 
-
         player = (Player)jsl.getObject(jslLabel.PLAYER);
-
         jsl.add(new PlayerController(player, 350.0f));
 
         camera = new Camera(player);
         shotgun = new Shotgun(player, jsl);
+
+        Zombie.fillZombies(creatureSize, creatureSize, jsl);
 
         jslCursor.setCursor(jslCursor.MOVE);
     }
@@ -76,7 +76,7 @@ public class MainClass extends jslEngine {
         HUD.render(g);
 
         g.setColor(new Color(255, 255,255));
-        g.drawString("FPS: "+getFpsCount(), 20, 50);
+        g.drawString("FPS: " + getFpsCount(), 20, 50);
     }
 
     protected void onMousePressed(MouseEvent e) {

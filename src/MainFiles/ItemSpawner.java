@@ -1,5 +1,6 @@
 package MainFiles;
 
+import jslEngine.jslLabel;
 import jslEngine.jslManager;
 import jslEngine.jslObject;
 import jslEngine.jslTimer;
@@ -9,34 +10,34 @@ import java.util.Random;
 
 public class ItemSpawner extends jslObject {
 
-    private jslTimer nextAmmoTimer;
-    private jslTimer nextHealthTimer;
+    private jslTimer nextItemTimer;
     private jslManager jsl;
+    private Random r = new Random();
 
     public ItemSpawner(float x, float y, float w, float h, jslManager jsl) {
         super(x, y, w, h);
-
         this.jsl = jsl;
 
-        nextAmmoTimer = new jslTimer(8);
-        nextAmmoTimer.start();
+        this.setLabel(jslLabel.SPAWNER);
+        this.collisionBox.setHasBounds(false);
 
-        nextHealthTimer = new jslTimer(15);
-        nextHealthTimer.start();
+        nextItemTimer = new jslTimer(r.nextInt(5) + 10);
+        nextItemTimer.start();
     }
 
     public void update(float et) {
-        if(nextAmmoTimer.update(et)) {
-            if(Ammo.getCounter() < 2) {
-                Random r = new Random();
-                jsl.add(new Ammo(getX(), getY(), 32, 32, jsl));
+        if(nextItemTimer.update()) {
+            Random r = new Random();
+            switch (r.nextInt(3)) {
+                case 0:
+                case 1:
+                    jsl.add(new Ammo(getX(), getY(), 32, 32, jsl));
+                    break;
+                case 2:
+                    jsl.add(new Health(getX(), getY(), 32, 32, jsl));
+                    break;
             }
-        }
-        if(nextHealthTimer.update(et)) {
-            if(Health.getCounter() < 1) {
-                Random r = new Random();
-                jsl.add(new Health(r.nextInt(800), r.nextInt(800), 32, 32, jsl));
-            }
+            nextItemTimer.setDuration(r.nextInt(5) + 10);
         }
     }
 

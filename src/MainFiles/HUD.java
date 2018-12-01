@@ -11,15 +11,15 @@ public class HUD {
     private static float maxHp = 100.0f;
 
     private static int magazines = 2;
-    private static int magazineSize = 5;
+    private static int magazineSize = 8;
     private static int ammo = magazineSize;
-    private static jslTimer reloadTimer = new jslTimer(3.0f);
+    private static jslTimer reloadTimer = new jslTimer(2.0f);
 
     private static float x, y, w, h;
     private static float padding = 2.0f;
 
     public static void update(float et) {
-        if(reloadTimer.update(et)) {
+        if(reloadTimer.update()) {
             reloadTimer.stop();
             ammo = magazineSize;
             magazines--;
@@ -40,15 +40,23 @@ public class HUD {
     public static boolean getAmmo() {
         if(ammo > 0) {
             ammo--;
+
+            reload();
+
             return true;
         }
-        // End of ammo!
-        if(!reloadTimer.isRunning()) {
-            if(magazines > 0) {
-                reloadTimer.restart();
+        return false;
+    }
+
+    private static void reload() {
+        if(ammo == 0) {
+            // End of ammo!
+            if (!reloadTimer.isRunning()) {
+                if (magazines > 0) {
+                    reloadTimer.restart();
+                }
             }
         }
-        return false;
     }
 
     public static void setHp(float hp) { HUD.hp = hp; }
@@ -66,6 +74,7 @@ public class HUD {
 
     public static void addMagazine(int nr) {
         magazines += nr;
+        reload();
     }
 
     public static float getHp() { return hp;}

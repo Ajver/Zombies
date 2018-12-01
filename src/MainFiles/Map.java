@@ -65,6 +65,7 @@ public class Map {
                         o = new ItemSpawner(x, y, MainClass.creatureSize, MainClass.creatureSize, jsl);
                     }else if(r == 255 && g == 0 && b == 0) {
                         // Zombie spawner
+                        o = new ZombieSpawner(x, y, MainClass.creatureSize, MainClass.creatureSize, jsl);
                     }else if(r == 255 && g == 255 && b == 0) {
                         // Door
                     }else if(r == 153 && g == 153 && b == 0) {

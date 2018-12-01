@@ -22,10 +22,11 @@ public class jslSound {
     public boolean play() {
         if(clip != null) {
             if(clip.isOpen()) {
+                load(path);
                 clip.start();
                 return true;
             }else {
-                return play(path);
+                return replay();
             }
         }
         return false;
@@ -68,7 +69,7 @@ public class jslSound {
 
             return true;
         } catch(Exception e) {
-            System.out.println("Path: " + path);
+            System.out.println("Could not find file: " + path);
             e.printStackTrace();
             return false;
         }
