@@ -2,18 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aa3ca37-3d6c-484d-8628-87d3c5bf20e3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/MainFiles/Ammo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MainFiles/ItemSpawner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MainFiles/Health.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MainFiles/ZombieHP.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zombies/MainFiles/HUD.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zombies/MainFiles/HUD.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zombies/MainFiles/Ammo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zombies/MainFiles/Ammo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zombies/MainFiles/ItemSpawner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zombies/MainFiles/ItemSpawner.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Zombies/MainFiles/MainClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zombies/MainFiles/MainClass.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Zombies/MainFiles/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zombies/MainFiles/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zombies/MainFiles/Zombie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zombies/MainFiles/Zombie.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Zombies/jslEngine/jslLabel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zombies/jslEngine/jslLabel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainFiles/HUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFiles/HUD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zombies/jslEngine/jslManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zombies/jslEngine/jslManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zombies/jslEngine/jslObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zombies/jslEngine/jslObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainFiles/Ammo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFiles/Ammo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainFiles/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFiles/Bullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainFiles/ItemSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFiles/ItemSpawner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainFiles/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFiles/MainClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainFiles/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFiles/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jslEngine/jslCollisionBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jslEngine/jslCollisionBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainFiles/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFiles/Zombie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jslEngine/jslLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jslEngine/jslLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jslEngine/jslManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jslEngine/jslManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jslEngine/jslObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jslEngine/jslObject.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,36 +53,50 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="groovy" value="2" />
-          <entry key="java" value="65" />
+          <entry key="java" value="71" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Groovy" value="2" />
-          <entry key="JAVA" value="65" />
+          <entry key="JAVA" value="71" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="groovy" value="21" />
-          <entry key="java" value="13568" />
+          <entry key="java" value="14729" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="21" />
-          <entry key="JAVA" value="13568" />
+          <entry key="JAVA" value="14729" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MainFiles/Zombie.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="406">
+              <caret line="99" column="35" selection-start-line="99" selection-start-column="35" selection-end-line="99" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3027#3028#0" expanded="true" />
+                <element signature="e#3121#3122#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainFiles/MainClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="74" column="39" lean-forward="true" selection-start-line="74" selection-start-column="39" selection-end-line="74" selection-end-column="39" />
+            <state relative-caret-position="375">
+              <caret line="39" column="32" lean-forward="true" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
               <folding>
                 <element signature="method#onKeyPressed#0;class#MainClass#0" />
               </folding>
@@ -82,11 +104,56 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/jslEngine/jslManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="381">
+              <caret line="63" column="46" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MainFiles/Bullet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6">
+              <caret line="13" column="59" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainFiles/ItemSpawner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+            <state relative-caret-position="500">
+              <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MainFiles/ZombieHP.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MainFiles/Health.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-19">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -97,8 +164,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainFiles/Ammo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+            <state>
+              <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,8 +176,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainFiles/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+            <state relative-caret-position="575">
+              <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -121,17 +188,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/jslEngine/jslObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="15" column="68" lean-forward="true" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/jslEngine/jslLabel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+            <state relative-caret-position="150">
+              <caret line="25" column="47" lean-forward="true" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -171,22 +229,24 @@
         <option value="$PROJECT_DIR$/src/MainFiles/Block.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/Map.java" />
         <option value="$PROJECT_DIR$/src/jslEngine/jslCollision.java" />
-        <option value="$PROJECT_DIR$/src/MainFiles/Bullet.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/Shotgun.java" />
         <option value="$PROJECT_DIR$/src/jslEngine/jslTimer.java" />
-        <option value="$PROJECT_DIR$/src/jslEngine/jslObject.java" />
-        <option value="$PROJECT_DIR$/src/jslEngine/jslManager.java" />
         <option value="$PROJECT_DIR$/src/jslEngine/jslSound.java" />
-        <option value="$PROJECT_DIR$/src/MainFiles/Zombie.java" />
         <option value="$PROJECT_DIR$/src/jslEngine/jslCursor.java" />
         <option value="$PROJECT_DIR$/src/jslEngine/jslEngine.java" />
-        <option value="$PROJECT_DIR$/src/jslEngine/jslLabel.java" />
-        <option value="$PROJECT_DIR$/src/MainFiles/Player.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/HUD.java" />
-        <option value="$PROJECT_DIR$/src/MainFiles/MainClass.java" />
         <option value="$PROJECT_DIR$/src/jslEngine/jslCollisionBox.java" />
+        <option value="$PROJECT_DIR$/src/MainFiles/Player.java" />
+        <option value="$PROJECT_DIR$/src/MainFiles/Health.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/Ammo.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/ItemSpawner.java" />
+        <option value="$PROJECT_DIR$/src/jslEngine/jslLabel.java" />
+        <option value="$PROJECT_DIR$/src/jslEngine/jslManager.java" />
+        <option value="$PROJECT_DIR$/src/MainFiles/MainClass.java" />
+        <option value="$PROJECT_DIR$/src/jslEngine/jslObject.java" />
+        <option value="$PROJECT_DIR$/src/MainFiles/Bullet.java" />
+        <option value="$PROJECT_DIR$/src/MainFiles/ZombieHP.java" />
+        <option value="$PROJECT_DIR$/src/MainFiles/Zombie.java" />
       </list>
     </option>
   </component>
@@ -242,7 +302,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/Git repositories/Zombies/src/jslEngine/jslVector2.java" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543661598992" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543664055693" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Groovy JUnit" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Groovy JUnit" value="groovy.util.GroovyTestCase" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -441,13 +501,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/jslEngine/jslManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="212" column="9" selection-start-line="212" selection-start-column="9" selection-end-line="212" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/sound/sampled/DataLine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="526">
@@ -472,17 +525,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainFiles/Bullet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#update#0;class#Bullet#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/jslEngine/jslEngine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -494,16 +536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainFiles/Zombie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -531,23 +563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainFiles/MainClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="74" column="39" lean-forward="true" selection-start-line="74" selection-start-column="39" selection-end-line="74" selection-end-column="39" />
-          <folding>
-            <element signature="method#onKeyPressed#0;class#MainClass#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jslEngine/jslObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="15" column="68" lean-forward="true" selection-start-line="15" selection-start-column="68" selection-end-line="15" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/jslEngine/jslCollisionBox.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
@@ -557,15 +572,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/jslEngine/jslLabel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        <state relative-caret-position="175">
+          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainFiles/MainClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="39" column="32" lean-forward="true" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="32" />
+          <folding>
+            <element signature="method#onKeyPressed#0;class#MainClass#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jslEngine/jslObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="25" column="47" lean-forward="true" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainFiles/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        <state relative-caret-position="575">
+          <caret line="23" column="38" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -574,8 +606,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainFiles/Ammo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+        <state>
+          <caret column="18" lean-forward="true" selection-start-column="18" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -584,10 +616,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainFiles/ItemSpawner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="15" column="39" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+        <state relative-caret-position="500">
+          <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainFiles/Health.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-19">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainFiles/Bullet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="13" column="59" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainFiles/ZombieHP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jslEngine/jslManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="63" column="46" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainFiles/Zombie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="99" column="35" selection-start-line="99" selection-start-column="35" selection-end-line="99" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3027#3028#0" expanded="true" />
+            <element signature="e#3121#3122#0" expanded="true" />
           </folding>
         </state>
       </provider>

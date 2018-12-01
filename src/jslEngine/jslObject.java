@@ -15,7 +15,7 @@ public class jslObject {
     public boolean hover = false;
     public jslCollisionBox collisionBox = new jslCollisionBox(this);
     public jslObject() { this(0, 0); }
-    public jslObject(float x, float y) { this(0, 0, 32, 32); }
+    public jslObject(float x, float y) { this(x, y, 32, 32); }
     public jslObject(float x, float y, float w, float h) {
         this.setPosition(x, y);
         this.setSize(w, h);
@@ -125,8 +125,8 @@ public class jslObject {
     public void setTranslateY(float ty) { this.translateY = ty; }
     public void setIsTranslating(boolean flag) { this.isTranslating = flag; }
     public boolean getIsTranslating() { return this.isTranslating; }
-    public float getX() { return x + (isTranslating ? translateX : 0); }
-    public float getY() { return y + (isTranslating ? translateY : 0); }
+    public float getX() { return x; }
+    public float getY() { return y; }
     public float getW() { return w; }
     public float getH() { return h; }
     public float getCenterX() { return getX() + getW() * 0.5f; }
@@ -147,6 +147,9 @@ public class jslObject {
     protected void update(float et) {}
     public void afterUpdate(float et) {}
     public void beforeRender(Graphics g) {
+        if(isTranslating) {
+            g.translate((int)translateX, (int)translateY);
+        }
         if(rotate != 0.0f) {
             ((Graphics2D)g).rotate(getRotate(), getX() + getRotateX(), getY() + getRotateY());
         }
@@ -154,6 +157,9 @@ public class jslObject {
     public void afterRender(Graphics g) {
         if(rotate != 0.0f) {
             ((Graphics2D)g).rotate(-getRotate(), getX() + getRotateX(), getY() + getRotateY());
+        }
+        if(isTranslating) {
+            g.translate(-(int)translateX, -(int)translateY);
         }
     }
     protected void render(Graphics g) {}

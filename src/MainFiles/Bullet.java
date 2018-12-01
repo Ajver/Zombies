@@ -22,13 +22,7 @@ public class Bullet extends jslObject {
     }
 
     public void onCollision(jslObject other) {
-        if(other.getLabel() == jslLabel.ZOMBIE) {
-            jslVector2 v = new jslVector2(getVelX(), getVelY());
-            v.normalize();
-            v.multiply(16);
-            other.move(v.x, v.y);
-            jsl.removeObject(this);
-        }else if(other.getLabel() == jslLabel.WALL) {
+        if(other.is(jslLabel.WALL)) {
             jsl.removeObject(this);
         }
     }

@@ -5,8 +5,9 @@ public enum jslLabel {
     DEFAULT,
     PLAYER,
     ZOMBIE,
+    ZOMBIE_HP,
     WALL,
     GROUND,
     BULLET,
-    AMMO
+    ITEM
 }

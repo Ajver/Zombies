@@ -10,6 +10,9 @@ public class Zombie extends jslObject {
 
     private BufferedImage texture = Texture.zombieImg;
     private Player player;
+    private jslManager jsl;
+
+    private ZombieHP hp;
 
     private float vel;
 
@@ -26,13 +29,16 @@ public class Zombie extends jslObject {
             new jslSound("res/sounds/zombie4.wav")
     };
 
-    public Zombie(float x, float y, float w, float h, float vel, Player player) {
+    public Zombie(float x, float y, float w, float h, float vel, Player player, jslManager jsl) {
         super(x, y, w, h);
         this.vel = vel;
         this.player = player;
         this.setRotateToCenter();
         this.setLabel(jslLabel.ZOMBIE);
         this.strange = 10.0f;
+        this.jsl = jsl;
+
+        jsl.add(this.hp = new ZombieHP(50, getW(),getW()*1.5f, 15));
 
         Random r = new Random();
         soundTimer = new jslTimer((r.nextInt(1000) + 3000) / 1000.0f);
@@ -57,6 +63,8 @@ public class Zombie extends jslObject {
             soundTimer.setDuration((r.nextInt(5000) + 4000) / 1000.0f);
             zombieSounds[r.nextInt(zombieSounds.length)].play();
         }
+
+        hp.setPosition(getX(), getY());
     }
 
     public void afterUpdate(float et) {
@@ -81,7 +89,18 @@ public class Zombie extends jslObject {
     }
 
     public void onCollision(jslObject other) {
-        if(other.getLabel() != jslLabel.BULLET) {
+        if(other.is(jslLabel.BULLET)) {
+            jslVector2 v = new jslVector2(other.getVelX(), other.getVelY());
+            v.normalize();
+            v.multiply(16);
+            move(v.x, v.y);
+            jsl.removeObject(other);
+            System.out.println("foo");
+            if(!hp.addHp(-20)) {
+                jsl.removeObject(hp);
+                jsl.removeObject(this);
+            }
+        }else {
             collisionBox.bound(other);
         }
     }

@@ -35,9 +35,11 @@ public class MainClass extends jslEngine {
         jsl.setRenderOrder(
                 jslLabel.GROUND,
                 jslLabel.BULLET,
+                jslLabel.ITEM,
                 jslLabel.PLAYER,
                 jslLabel.ZOMBIE,
                 jslLabel.WALL,
+                jslLabel.ZOMBIE_HP,
                 jslLabel.DEFAULT);
 
         WW = WW();
@@ -56,7 +58,7 @@ public class MainClass extends jslEngine {
 
         Random r = new Random();
         for(int i=0; i<3; i++) {
-            jsl.add(new Zombie(r.nextInt(500), r.nextInt(500), creatureSize, creatureSize, 100.0f, player));
+            jsl.add(new Zombie(r.nextInt(500), r.nextInt(500), creatureSize, creatureSize, 100.0f, player, jsl));
         }
 
         itemSpawner = new ItemSpawner(jsl);

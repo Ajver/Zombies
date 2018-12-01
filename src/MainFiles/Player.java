@@ -21,7 +21,7 @@ public class Player extends jslObject {
 
     public void onCollision(jslObject other) {
         if(!other.is(jslLabel.BULLET)) {
-            if(!other.is(jslLabel.AMMO)) {
+            if(!other.is(jslLabel.ITEM)) {
                 collisionBox.bound(other);
             }
         }
