@@ -95,7 +95,6 @@ public class Zombie extends jslObject {
             v.multiply(16);
             move(v.x, v.y);
             jsl.removeObject(other);
-            System.out.println("foo");
             if(!hp.addHp(-20)) {
                 jsl.removeObject(hp);
                 jsl.removeObject(this);

@@ -142,6 +142,14 @@ public class jslManager {
     public void add(jslObject o) { objects.add(o); sortObjects(); }
     public LinkedList<jslObject> getObjects() { return objects; }
     public jslObject getObject(int i) { return objects.get(i); }
+    public jslObject getObject(jslLabel l) {
+        for(jslObject o : objects) {
+            if(o.is(l)) {
+                return o;
+            }
+        }
+        return null;
+    }
     public void removeAllObjects() { objects.clear(); }
     public void removeObject(int i) { objects.remove(i); }
     public void removeObject(jslObject o) {

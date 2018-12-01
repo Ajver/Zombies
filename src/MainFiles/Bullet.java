@@ -3,7 +3,6 @@ package MainFiles;
 import jslEngine.jslLabel;
 import jslEngine.jslManager;
 import jslEngine.jslObject;
-import jslEngine.jslVector2;
 
 import java.awt.*;
 

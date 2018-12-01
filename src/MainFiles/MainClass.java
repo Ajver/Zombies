@@ -12,12 +12,14 @@ import java.util.Random;
 public class MainClass extends jslEngine {
 
     public static int WW = 1000, WH = 600;
+    public static float blockSize;
+    public static float creatureSize;
+
 
     private Player player;
     private Shotgun shotgun;
     private Camera camera;
     private Map map;
-    private ItemSpawner itemSpawner;
 
     private MainClass() {
         start("Zombies", WindowType.jslFullscreen);
@@ -45,23 +47,18 @@ public class MainClass extends jslEngine {
         WW = WW();
         WH = WH();
 
-        float creatureSize = WW() * 0.035f;
-        System.out.println("creature size: " + creatureSize);
+        blockSize = WW * 0.016f;
+        creatureSize = WW * 0.035f;
 
-        player = new Player(WW() * 0.5f, WH() * 0.5f, creatureSize, creatureSize);
-        jsl.add(player);
+        map = new Map(jsl);
+
+
+        player = (Player)jsl.getObject(jslLabel.PLAYER);
+
         jsl.add(new PlayerController(player, 350.0f));
 
         camera = new Camera(player);
         shotgun = new Shotgun(player, jsl);
-        map = new Map(jsl);
-
-        Random r = new Random();
-        for(int i=0; i<3; i++) {
-            jsl.add(new Zombie(r.nextInt(500), r.nextInt(500), creatureSize, creatureSize, 100.0f, player, jsl));
-        }
-
-        itemSpawner = new ItemSpawner(jsl);
 
         jslCursor.setCursor(jslCursor.MOVE);
     }
@@ -71,7 +68,6 @@ public class MainClass extends jslEngine {
         jsl.setTranslate(-camera.getX(), -camera.getY());
         shotgun.update(et);
         HUD.update(et);
-        itemSpawner.update(et);
     }
 
     protected void render(Graphics g) {
