@@ -13,6 +13,7 @@ public class ItemSpawner extends jslObject {
     private jslTimer nextItemTimer;
     private jslManager jsl;
     private Random r = new Random();
+    private boolean hasItem = false;
 
     public ItemSpawner(float x, float y, float w, float h, jslManager jsl) {
         super(x, y, w, h);
@@ -26,19 +27,35 @@ public class ItemSpawner extends jslObject {
     }
 
     public void update(float et) {
+        if(hasItem) {
+            return;
+        }
+
         if(nextItemTimer.update()) {
             Random r = new Random();
-            switch (r.nextInt(3)) {
+            switch (r.nextInt(10)) {
                 case 0:
                 case 1:
-                    jsl.add(new Ammo(getX(), getY(), 32, 32, jsl));
-                    break;
                 case 2:
-                    jsl.add(new Health(getX(), getY(), 32, 32, jsl));
+                case 3:
+                case 4:
+                case 5:
+                    jsl.add(new Ammo(getX(), getY(), 32, 32, jsl, this));
+                    break;
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                    jsl.add(new Health(getX(), getY(), 32, 32, jsl, this));
                     break;
             }
+            hasItem = true;
             nextItemTimer.setDuration(r.nextInt(5) + 10);
         }
+    }
+
+    public void clear() {
+        this.hasItem = false;
     }
 
     public void render(Graphics g) {

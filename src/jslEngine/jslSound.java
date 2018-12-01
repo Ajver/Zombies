@@ -38,6 +38,11 @@ public class jslSound {
         return play();
     }
 
+    // Play sound continuously
+    public void loop() {
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
+    }
+
     // Start from begin
     public boolean replay() {
         return play(path);

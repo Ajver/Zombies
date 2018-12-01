@@ -1,27 +1,17 @@
 package MainFiles;
 
-import jslEngine.jslLabel;
 import jslEngine.jslManager;
-import jslEngine.jslObject;
 
 import java.awt.*;
 
-public class Health extends jslObject {
+public class Health extends Item {
 
-    private jslManager jsl;
-
-    public Health(float x, float y, float w, float h, jslManager jsl) {
-        super(x, y, w, h);
-        this.jsl = jsl;
-        this.setLabel(jslLabel.ITEM);
-        this.collisionBox.setHasBounds(false);
+    public Health(float x, float y, float w, float h, jslManager jsl, ItemSpawner spawner) {
+        super(x, y, w, h, jsl, spawner);
     }
 
-    public void onCollision(jslObject other) {
-        if(other.is(jslLabel.PLAYER)) {
-            HUD.addHp(20);
-            jsl.removeObject(this);
-        }
+    protected void onPick() {
+        HUD.addHp(20);
     }
 
     public void render(Graphics g) {

@@ -20,12 +20,14 @@ public class MainClass extends jslEngine {
     private Camera camera;
     private Map map;
 
+    private jslSound themeMusic;
+
     private MainClass() {
         start("Zombies", WindowType.jslFullscreen);
         setAntialiasing(true);
     }
 
-    protected void onCreate() {
+    public void onCreate() {
         Texture.loadTextures();
 
         WW = WW();
@@ -60,6 +62,9 @@ public class MainClass extends jslEngine {
 
         Zombie.fillZombies(creatureSize, creatureSize, jsl);
 
+        themeMusic = new jslSound("res/sounds/theme.wav");
+        themeMusic.setLevel(0.7f);
+        themeMusic.loop();
         jslCursor.setCursor(jslCursor.MOVE);
     }
 

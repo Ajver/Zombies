@@ -42,7 +42,7 @@ public class Zombie extends jslObject {
 
         for(int i=0; i<zombieSounds.length; i++) {
             zombieSounds[i] = new jslSound("res/sounds/zombie" + (i+1) + ".wav");
-            zombieSounds[i].setLevel(0.55f);
+            zombieSounds[i].setLevel(0.6f);
         }
 
         reset(0, 0);
@@ -102,7 +102,7 @@ public class Zombie extends jslObject {
             v.multiply(16);
             move(v.x, v.y);
             jsl.removeObject(other);
-            if(!hp.addHp(-20)) {
+            if(!hp.addHp(-13 - r.nextInt(20))) {
                 zombies.add(this);
                 jsl.removeObject(hp);
                 jsl.removeObject(this);
@@ -127,7 +127,7 @@ public class Zombie extends jslObject {
     }
 
     public static void fillZombies(float w, float h, jslManager jsl) {
-        for(int i=0; i<5; i++) {
+        for(int i=0; i<20; i++) {
             zombies.add(new Zombie(w, h, jsl));
         }
     }

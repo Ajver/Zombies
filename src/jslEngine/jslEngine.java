@@ -147,8 +147,6 @@ public abstract class jslEngine extends Canvas implements Runnable, KeyListener,
         this.thread = new Thread(this);
         this.jsl = new jslManager(this);
 
-        this.onCreate();
-
         this.thread.start();
     }
     private void jslUpdate(float et) {
@@ -186,6 +184,7 @@ public abstract class jslEngine extends Canvas implements Runnable, KeyListener,
     // Main loop
     public void run() {
         this.requestFocus();
+        this.onCreate();
         long start = 0;
         long stop = 0;
         float elapsedTime = 0.0f;
