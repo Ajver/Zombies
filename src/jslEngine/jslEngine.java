@@ -190,6 +190,14 @@ public abstract class jslEngine extends Canvas implements Runnable, KeyListener,
         bs.show();
     }
 
+    private void changeCursor() {
+        if(jslCursor.cursorChanged) {
+            setCursor(jslCursor.cursor);
+        }else {
+            jslCursor.setCursor(jslCursor.DEFAULT);
+        }
+    }
+
     // Main loop
     public void run() {
         this.requestFocus();
@@ -204,6 +212,7 @@ public abstract class jslEngine extends Canvas implements Runnable, KeyListener,
             this.jslRender();
             fpsCounter++;
             stop = System.currentTimeMillis();
+            changeCursor();
             elapsedTime = (stop - start) / 1000.0f;
             if(System.currentTimeMillis() >= fpsTimer) {
                 fpsTimer += 1000;
