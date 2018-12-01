@@ -53,7 +53,7 @@ public class Zombie extends jslObject {
         jslVector2 v = new jslVector2(player.getCenterX() - getCenterX(), player.getCenterY() - getCenterY());
         v.normalize();
         v.multiply(vel);
-        setVel(v);
+        setVel(v.x, v.y);
 
         float theta = (float)Math.atan2(v.x, v.y);
         setRotate(2*(float)Math.PI - theta);

@@ -94,6 +94,6 @@ public class PlayerController extends jslKeyInput {
         vVel.setY(isUp != isDown ? (isUp ? -1 : 1) : 0);
         vVel.normalize();
         vVel.multiply(vel);
-        player.setVel(vVel);
+        player.setVel(vVel.x, vVel.y);
     }
 }

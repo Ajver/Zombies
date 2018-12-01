@@ -5,9 +5,7 @@ import java.awt.event.MouseEvent;
 
 public class jslObject {
     protected boolean isTranslating = true;
-    protected boolean isMaxX = false, isMaxY = false, isMaxW = false, isMaxH = false,
-            isMinX = false, isMinY = false, isMinW = false, isMinH = false;
-    protected float x, y, w, h, maxX, maxY, maxW, maxH, minX, minY, minW, minH;
+    protected float x, y, w, h;
     protected float velX, velY, velR;
     protected float rotate, rotateX, rotateY;
     protected float translateX, translateY;
@@ -28,13 +26,9 @@ public class jslObject {
         setY(y);
     }
     public void setX(float x) {
-        if(isMinX) { x = Math.max(x, minX); }
-        if(isMaxX) { x = Math.min(x, maxX); }
         this.x = x;
     }
     public void setY(float y) {
-        if(isMinY) { y = Math.max(y, minY); }
-        if(isMaxY) { y = Math.min(y, maxY); }
         this.y = y;
     }
     public void setSize(float w, float h) {
@@ -42,64 +36,19 @@ public class jslObject {
         setH(h);
     }
     public void setW(float w) {
-        if(isMinW) { w = Math.max(w, minW); }
-        if(isMaxW) { w = Math.min(w, maxW); }
         this.w = w;
     }
     public void setH(float h) {
-        if(isMinH) { h = Math.max(h, minH); }
-        if(isMaxH) { h = Math.min(h, maxH); }
         this.h = h;
     }
     public void move(float x, float y) {
         this.setX(this.x + x);
         this.setY(this.y + y);
     }
-    public void setMaxX(boolean flag) { this.isMaxX = flag; }
-    public void setMaxY(boolean flag) { this.isMaxY = flag; }
-    public void setMaxW(boolean flag) { this.isMaxW = flag; }
-    public void setMaxH(boolean flag) { this.isMaxH = flag; }
-    public void setMaxX(float maxX) {
-        this.maxX = maxX;
-        isMaxX = true;
-    }
-    public void setMaxY(float maxY) {
-        this.maxY = maxY;
-        isMaxY = true;
-    }
-    public void setMaxW(float maxW) {
-        this.maxW = maxW;
-        isMaxW = true;
-    }
-    public void setMaxH(float maxH) {
-        this.maxH = maxH;
-        isMaxH = true;
-    }
-    public void setMinX(boolean flag) { this.isMinX = flag; }
-    public void setMinY(boolean flag) { this.isMinY = flag; }
-    public void setMinW(boolean flag) { this.isMinW = flag; }
-    public void setMinH(boolean flag) { this.isMinH = flag; }
-    public void setMinX(float minX) {
-        this.minX = minX;
-        isMinX = true;
-    }
-    public void setMinY(float minY) {
-        this.minY = minY;
-        isMinY = true;
-    }
-    public void setMinW(float minW) {
-        this.minW = minW;
-        isMinW = true;
-    }
-    public void setMinH(float minH) {
-        this.minH = minH;
-        isMinH = true;
-    }
     public void setVel(float x, float y) {
         this.setVelX(x);
         this.setVelY(y);
     }
-    public void setVel(jslVector2 v) { this.setVel(v.x, v.y); }
     public void setVelX(float velX) { this.velX = velX; }
     public void setVelY(float velY) { this.velY = velY; }
     public void setVelR(float velR) { this.velR = velR; }
@@ -176,12 +125,6 @@ public class jslObject {
     public void setLabel(jslLabel l) { this.label = l; }
     public jslLabel getLabel() { return this.label; }
     public boolean is(jslLabel l) { return getLabel() == l; }
-    public void onEnter() {}
-    public void onLeave() {}
-    public void onPress() {}
-    public void onRelease() {}
-    public void onMove() {}
-    public void onDrag() {}
     public void onEnter(MouseEvent e) {}
     public void onLeave(MouseEvent e) {}
     public void onPress(MouseEvent e) {}
