@@ -14,6 +14,7 @@ public class jslManager {
     private ArrayList<jslLabel> renderOrder = new ArrayList<>();
     private ArrayList<jslObject> objects = new ArrayList<>();
     private ArrayList<jslKeyInput> keyInputs = new ArrayList<>();
+    private ArrayList<jslObject> mouseInputs = new ArrayList<>();
     public jslManager(jslEngine engine) { this.engine = engine; }
     public void setAutoRender(boolean flag) { this.autoRender = flag; }
     public void setAutoUpdate(boolean flag) { this.autoUpdate = flag; }
@@ -73,8 +74,8 @@ public class jslManager {
         }
     }
     public void mouseMoved(MouseEvent e) {
-        for(int i=objects.size()-1; i>=0; i--) {
-            jslObject o = objects.get(i);
+        for(int i=mouseInputs.size()-1; i>=0; i--) {
+            jslObject o = mouseInputs.get(i);
             if (o.isPointIn(e.getX()-getTranslateX(), e.getY()-getTranslateY())) {
                 o.onMove(e);
                 if (!o.hover) {
@@ -82,7 +83,7 @@ public class jslManager {
                     o.onEnter(e);
                 }
                 for(i=i-1; i>=0; i--) {
-                    o = objects.get(i);
+                    o = mouseInputs.get(i);
                     if(o.hover) {
                         o.hover = false;
                         o.onLeave(e);
@@ -101,8 +102,8 @@ public class jslManager {
         }
     }
     public void mousePressed(MouseEvent e) {
-        for(int i=objects.size()-1; i>=0; i--) {
-            jslObject o = objects.get(i);
+        for(int i=mouseInputs.size()-1; i>=0; i--) {
+            jslObject o = mouseInputs.get(i);
             if(o.isPointIn(e.getX()-getTranslateX(), e.getY()-getTranslateY())) {
                 clickedOb = o;
                 o.onPress(e);
@@ -165,6 +166,18 @@ public class jslManager {
             }
         }
     }
+    public void addMouseInput(jslObject o) { mouseInputs.add(o); }
+    public ArrayList<jslObject> getMouseInputs() { return mouseInputs; }
+    public jslObject getMouseInput(int i) { return mouseInputs.get(i); }
+    public void removeAllMouseInputs() { mouseInputs.clear(); }
+    public void removeMouseInput(int i) { mouseInputs.remove(i); }
+    public void removeMouseInput(jslObject o) {
+        for(int i=mouseInputs.size()-1; i>=0; i--) {
+            if(getMouseInput(i) == o) {
+                removeKeyInput(i);
+            }
+        }
+    }
     public void addToRenderOrder(jslLabel l) {
         for(int i=renderOrder.size()-1; i>=0; i--) {
             if(renderOrder.get(i) == l) {
@@ -187,7 +200,9 @@ public class jslManager {
     }
     private void sortObjects() {
         ArrayList<jslObject> sortedOb = new ArrayList<>();
+        ArrayList<jslObject> sortedMI = new ArrayList<>();
         for(int j=0; j<renderOrder.size(); j++) {
+            // Sort objects to render
             for(int i=objects.size()-1; i>=0; i--) {
                 jslObject o = objects.get(i);
                 if(o.is(renderOrder.get(j))) {
@@ -197,8 +212,19 @@ public class jslManager {
                     renderOrder.add(o.getLabel());
                 }
             }
+            // Sort objects to mouse input
+            for(int i=mouseInputs.size()-1; i>=0; i--) {
+                jslObject o = mouseInputs.get(i);
+                if(o.is(renderOrder.get(j))) {
+                    sortedMI.add(o);
+                    mouseInputs.remove(i);
+                }else if(!renderOrder.contains(o.getLabel())) {
+                    renderOrder.add(o.getLabel());
+                }
+            }
         }
         objects = sortedOb;
+        mouseInputs = sortedMI;
     }
     public ArrayList<jslLabel> getRenderOrder() { return this.renderOrder; }
 }
