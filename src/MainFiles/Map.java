@@ -12,38 +12,23 @@ import java.io.IOException;
 
 public class Map {
 
-    int w = 40, h = 25;
+    private float x, y, w, h;
+
+    private BufferedImage background = Texture.background;
+    private BufferedImage ceil = Texture.ceil;
 
     public Map(jslManager jsl) {
-        float bs = 32;
-
-//        // Horizontal walls
-//        for(int i=0; i<w; i++) {
-//            Block block = new Block(i*bs, 0, bs, bs, jslLabel.WALL);
-//            jsl.add(block);
-//
-//            block = new Block(i*bs, h*bs, bs, bs, jslLabel.WALL);
-//            jsl.add(block);
-//        }
-//
-//        // Vertical walls
-//        for(int i=1; i<h; i++) {
-//            Block block = new Block(0, i*bs, bs, bs, jslLabel.WALL);
-//            jsl.add(block);
-//
-//            block = new Block((w-1)*bs, i*bs, bs, bs, jslLabel.WALL);
-//            jsl.add(block);
-//        }
-
-        loadMap("res/map/Map1.png", jsl);
+        loadMap("res/map/Map.png", jsl);
     }
 
     public boolean loadMap(String path, jslManager jsl) {
         try {
             BufferedImage mapImg = ImageIO.read(new File(path));
 
-            this.w = mapImg.getWidth();
-            this.h = mapImg.getHeight();
+            int w = mapImg.getWidth();
+            int h = mapImg.getHeight();
+
+            Player player = null;
 
             for(int yy=0; yy<h; yy++) {
                 for(int xx=0; xx<w; xx++) {
@@ -54,17 +39,16 @@ public class Map {
                     int g = (rgb >> 8) & 0xff;
                     int b = (rgb) & 0xff;
 
-                    float x = xx * MainClass.blockSize - xx;
-                    float y = yy * MainClass.blockSize - yy;
+                    float x = xx * MainClass.blockSize;
+                    float y = yy * MainClass.blockSize;
 
                     if(r == 255 && g == 255 && b == 255) {
-                        o = new Block(x, y, MainClass.blockSize, MainClass.blockSize, jslLabel.WALL);
+                        o = new Wall(x, y, MainClass.blockSize, MainClass.blockSize);
                     }else if(r == 0 && g == 0 && b == 255){
                         o = new Player(x, y, MainClass.creatureSize, MainClass.creatureSize, jsl);
                     }else if(r == 0 && g == 255 && b == 0) {
                         o = new ItemSpawner(x, y, MainClass.creatureSize, MainClass.creatureSize, jsl);
                     }else if(r == 255 && g == 0 && b == 0) {
-                        // Zombie spawner
                         o = new ZombieSpawner(x, y, MainClass.creatureSize, MainClass.creatureSize, jsl);
                     }else if(r == 255 && g == 255 && b == 0) {
                         // Door
@@ -78,6 +62,10 @@ public class Map {
                 }
             }
 
+            if(player != null) {
+                jsl.add(player);
+            }
+
             return true;
         } catch (IOException e) {
             System.out.println("Could not find file: " + path);
@@ -86,7 +74,25 @@ public class Map {
         }
     }
 
-    public void render(Graphics g) {
+    public void update(float et) {
+        x = Math.min(Math.max(0, Camera.getX()), background.getWidth()-1);
+        y = Math.min(Math.max(0, Camera.getY()), background.getHeight()-1);
+        w = Math.max(Math.min(MainClass.WW, background.getWidth()-x), 1);
+        h = Math.max(Math.min(MainClass.WH, background.getHeight()-y), 1);
+    }
 
+    public void render(Graphics g) {
+        drawBG(background, g);
+    }
+
+    public void renderCeil(Graphics g) {
+        drawBG(ceil, g);
+    }
+
+    private void drawBG(BufferedImage img, Graphics g) {
+        g.drawImage(img.getSubimage((int)x, (int)y, (int)w, (int)h),
+                -(int)Math.min(0, Camera.getX()),
+                -(int)Math.min(0, Camera.getY()),
+                null);
     }
 }

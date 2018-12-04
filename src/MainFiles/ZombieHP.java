@@ -26,7 +26,7 @@ public class ZombieHP extends jslObject {
     public void render(Graphics g) {
         g.setColor(new Color(0,0 ,0));
         float padding = 1.0f;
-        g.drawRect((int)(getX()-padding), (int)(getY()-padding), (int)(getW() + padding*2.0f), (int)(getH() + padding*2.0f));
+        g.drawRect((int)(getX()-padding), (int)(getY()-padding), (int)(getW() + padding), (int)(getH() + padding));
 
         g.setColor(new Color(255, 0, 0));
         g.fillRect((int)getX(), (int)getY(), (int)(hp*getW()/maxHp), (int)getH());
@@ -39,6 +39,7 @@ public class ZombieHP extends jslObject {
             this.hp = 0;
             return false;
         }
+
         if(this.hp > maxHp) {
             this.hp = maxHp;
         }

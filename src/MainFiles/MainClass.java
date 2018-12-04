@@ -35,6 +35,7 @@ public class MainClass extends jslEngine {
 
         HUD.reset();
 
+        jsl.setAutoClearScreen(false);
         jsl.setRenderOrder(
                 jslLabel.GROUND,
                 jslLabel.SPAWNER,
@@ -49,7 +50,7 @@ public class MainClass extends jslEngine {
         WW = WW();
         WH = WH();
 
-        blockSize = 32;
+        blockSize = 64;
         creatureSize = 64;
 
         map = new Map(jsl);
@@ -73,9 +74,18 @@ public class MainClass extends jslEngine {
         jsl.setTranslate(-Camera.getX(), -Camera.getY());
         shotgun.update(et);
         HUD.update(et);
+        map.update(et);
+    }
+
+    protected void beforeRender(Graphics g) {
+        g.setColor(new Color(0, 0, 0));
+        g.fillRect(0, 0, WW(), WH());
+        map.render(g);
     }
 
     protected void render(Graphics g) {
+        map.renderCeil(g);
+
         HUD.render(g);
 
         g.setColor(new Color(255, 255,255));

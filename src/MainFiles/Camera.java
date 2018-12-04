@@ -11,7 +11,7 @@ public class Camera {
     private static float velX, velY;
 
     private static boolean isShaking = false;
-    private static jslVector2 vShake;
+    private static jslVector2 vShake = new jslVector2(0, 0);
     private static float power = 0.0f;
 
     private static jslObject o;
@@ -44,7 +44,7 @@ public class Camera {
             x = o.getX() - MainClass.WW / 2.0f + o.getW() / 2.0f;
             y = o.getY() - MainClass.WH / 2.0f + o.getH() / 2.0f;
 
-            vShake = new jslVector2(0, 0);
+            vShake.set(0, 0);
         }
     }
 

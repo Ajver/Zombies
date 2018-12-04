@@ -17,6 +17,7 @@ public abstract class jslEngine extends Canvas implements Runnable, KeyListener,
 
     // Those functions are to override
     protected abstract void update(float et);
+    protected void beforeRender(Graphics g) {}
     protected abstract void render(Graphics g);
 
     // After create all elements (on the end of constructor) ( --DO NOT-- override)
@@ -167,6 +168,7 @@ public abstract class jslEngine extends Canvas implements Runnable, KeyListener,
                     RenderingHints.VALUE_ANTIALIAS_ON);
             ((Graphics2D)g).setRenderingHints(rh);
         }
+        beforeRender(g);
         jsl.render(g);
         render(g);
         g.dispose();
