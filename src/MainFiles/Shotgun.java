@@ -41,11 +41,6 @@ public class Shotgun {
         }
     }
 
-    public void render(Graphics g) {
-        // Draw crosshair
-
-    }
-
     private void shot() {
         if(ready) {
             if(HUD.getAmmo()) {
@@ -57,7 +52,10 @@ public class Shotgun {
                 v.normalize();
                 v.multiply(1200.0f);
 
-                Bullet bullet = new Bullet(player.getCenterX(), player.getCenterY(), 8, 8, jsl);
+                jslVector2 v2 = new jslVector2(0, player.getH() * 0.5f);
+                v2.rotate(player.getRotate());
+
+                Bullet bullet = new Bullet(player.getCenterX() + v2.x, player.getCenterY() + v2.y, 8, 8, jsl);
                 bullet.setVel(v.x, v.y);
 
                 jsl.add(bullet);

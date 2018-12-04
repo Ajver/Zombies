@@ -24,6 +24,7 @@ public class MainClass extends jslEngine {
 
     private MainClass() {
         start("Zombies", WindowType.jslFullscreen);
+//        start("Zombies", WW, WH);
         setAntialiasing(true);
     }
 
@@ -49,8 +50,8 @@ public class MainClass extends jslEngine {
         WW = WW();
         WH = WH();
 
-        blockSize = WW * 0.016f;
-        creatureSize = WW * 0.035f;
+        blockSize = 32;
+        creatureSize = 64;
 
         map = new Map(jsl);
 
@@ -65,7 +66,6 @@ public class MainClass extends jslEngine {
         themeMusic = new jslSound("res/sounds/theme.wav");
         themeMusic.setLevel(0.7f);
         themeMusic.loop();
-        //jslCursor.setCursor(jslCursor.MOVE);
         jslCursor.setCursor("res/img/Crosshair.png");
     }
 
@@ -77,8 +77,6 @@ public class MainClass extends jslEngine {
     }
 
     protected void render(Graphics g) {
-        shotgun.render(g);
-
         HUD.render(g);
 
         g.setColor(new Color(255, 255,255));
