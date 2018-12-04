@@ -3,7 +3,7 @@ package jslEngine;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class jslManager {
     private jslEngine engine;
@@ -11,9 +11,9 @@ public class jslManager {
     protected boolean isTranslating = true;
     private float translateX = 0, translateY = 0;
     private jslObject clickedOb = null;
-    private LinkedList<jslLabel> renderOrder = new LinkedList<>();
-    private LinkedList<jslObject> objects = new LinkedList<>();
-    private LinkedList<jslKeyInput> keyInputs = new LinkedList<>();
+    private ArrayList<jslLabel> renderOrder = new ArrayList<>();
+    private ArrayList<jslObject> objects = new ArrayList<>();
+    private ArrayList<jslKeyInput> keyInputs = new ArrayList<>();
     public jslManager(jslEngine engine) { this.engine = engine; }
     public void setAutoRender(boolean flag) { this.autoRender = flag; }
     public void setAutoUpdate(boolean flag) { this.autoUpdate = flag; }
@@ -119,7 +119,7 @@ public class jslManager {
         }
     }
     public void add(jslObject o) { objects.add(o); sortObjects(); }
-    public LinkedList<jslObject> getObjects() { return objects; }
+    public ArrayList<jslObject> getObjects() { return objects; }
     public jslObject getObject(int i) { return objects.get(i); }
     public jslObject getObject(jslLabel l) {
         for(jslObject o : objects) {
@@ -154,7 +154,7 @@ public class jslManager {
         }
     }
     public void add(jslKeyInput k) { keyInputs.add(k); }
-    public LinkedList<jslKeyInput> getKeyInputs() { return keyInputs; }
+    public ArrayList<jslKeyInput> getKeyInputs() { return keyInputs; }
     public jslKeyInput getKeyInput(int i) { return keyInputs.get(i); }
     public void removeAllKeyInputs() { keyInputs.clear(); }
     public void removeKeyInput(int i) { keyInputs.remove(i); }
@@ -174,7 +174,7 @@ public class jslManager {
         renderOrder.add(l);
         sortObjects();
     }
-    public void setRenderOrder(LinkedList<jslLabel> labels) {
+    public void setRenderOrder(ArrayList<jslLabel> labels) {
         renderOrder = labels;
         sortObjects();
     }
@@ -186,7 +186,7 @@ public class jslManager {
         sortObjects();
     }
     private void sortObjects() {
-        LinkedList<jslObject> sortedOb = new LinkedList<>();
+        ArrayList<jslObject> sortedOb = new ArrayList<>();
         for(int j=0; j<renderOrder.size(); j++) {
             for(int i=objects.size()-1; i>=0; i--) {
                 jslObject o = objects.get(i);
@@ -200,5 +200,5 @@ public class jslManager {
         }
         objects = sortedOb;
     }
-    public LinkedList<jslLabel> getRenderOrder() { return this.renderOrder; }
+    public ArrayList<jslLabel> getRenderOrder() { return this.renderOrder; }
 }

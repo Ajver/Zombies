@@ -26,7 +26,7 @@ public class ZombieSpawner extends jslObject {
     public void update(float et) {
         if (nextZombieTimer.update()) {
             Zombie.newZombie(jsl, getX(), getY());
-            nextZombieTimer.setDuration(r.nextInt(6) + 6.0f);
+            nextZombieTimer.setDuration(r.nextInt(6) + 5.0f);
         }
     }
 
