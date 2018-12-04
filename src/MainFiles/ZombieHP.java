@@ -15,7 +15,6 @@ public class ZombieHP extends jslObject {
         this.maxHp = maxHp;
         this.hp = maxHp;
         this.setLabel(jslLabel.ZOMBIE_HP);
-        this.collisionBox.setHasBounds(false);
         this.translateY(-getH() * 1.5f);
         this.translateX((zw - getW()) * 0.5f);
     }

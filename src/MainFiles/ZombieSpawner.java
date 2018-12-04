@@ -17,7 +17,6 @@ public class ZombieSpawner extends jslObject {
     public ZombieSpawner(float x, float y, float w, float h, jslManager jsl) {
         super(x, y, w, h);
         this.jsl = jsl;
-        this.collisionBox.setHasBounds(false);
 
         nextZombieTimer = new jslTimer(r.nextInt(6) + 4.0f);
         nextZombieTimer.start();

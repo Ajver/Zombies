@@ -11,7 +11,6 @@ public class jslObject {
     protected float translateX, translateY;
     protected jslLabel label = jslLabel.DEFAULT;
     public boolean hover = false;
-    public jslCollisionBox collisionBox = new jslCollisionBox(this);
     public jslObject() { this(0, 0); }
     public jslObject(float x, float y) { this(x, y, 32, 32); }
     public jslObject(float x, float y, float w, float h) {

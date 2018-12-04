@@ -20,7 +20,6 @@ public class ItemSpawner extends jslObject {
         this.jsl = jsl;
 
         this.setLabel(jslLabel.SPAWNER);
-        this.collisionBox.setHasBounds(false);
 
         nextItemTimer = new jslTimer(r.nextInt(5) + 10);
         nextItemTimer.start();

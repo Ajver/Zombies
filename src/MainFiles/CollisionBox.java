@@ -1,33 +1,24 @@
-package jslEngine;
+package MainFiles;
+
+import jslEngine.jslObject;
 
 import java.awt.*;
 
-public class jslCollisionBox {
+public class CollisionBox {
 
     private jslObject o;
-    private Rectangle selfBounds = null;
-    private boolean hasBounds = true;
 
-    public jslCollisionBox(jslObject o) {
+    public CollisionBox(jslObject o) {
         this.o = o;
     }
 
-    public void collision(jslObject other) {
-        Rectangle otherBounds = other.collisionBox.getBounds();
-        Rectangle bounds = selfBounds == null ? getBounds() : selfBounds;
-        if(bounds.intersects(otherBounds)) {
-            o.onCollision(other);
-        }
+    public boolean isCollision(jslObject other) {
+        Rectangle otherBounds = getBounds(other);
+        Rectangle bounds = getBounds();
+        return bounds.intersects(otherBounds);
     }
 
     public void bound(jslObject other) {
-        if(!this.hasBounds) {
-            return;
-        }
-        if(!other.collisionBox.hasBounds()) {
-            return;
-        }
-
         float toLeft = o.getX() - (other.getX() - o.getW());
         float toRight = (other.getX() + other.getW()) - o.getX();
         float toUp = o.getY() - (other.getY() - o.getH());
@@ -63,13 +54,10 @@ public class jslCollisionBox {
             }
         }
     }
-
-    public void setHasBounds(boolean flag) { this.hasBounds = flag; }
-
-    public boolean hasBounds() { return hasBounds; }
     public Rectangle getBounds() {
         return new Rectangle((int)o.getX(), (int)o.getY(), (int)o.getW(), (int)o.getH());
     }
-
-    public void setSelfBounds(Rectangle bounds) { this.selfBounds = bounds; }
+    public Rectangle getBounds(jslObject o) {
+        return new Rectangle((int)o.getX(), (int)o.getY(), (int)o.getW(), (int)o.getH());
+    }
 }

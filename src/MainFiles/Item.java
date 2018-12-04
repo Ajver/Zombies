@@ -14,7 +14,6 @@ public class Item extends jslObject {
         this.jsl = jsl;
         this.spawner = spawner;
         this.setLabel(jslLabel.ITEM);
-        this.collisionBox.setHasBounds(false);
     }
 
     public void onCollision(jslObject other) {

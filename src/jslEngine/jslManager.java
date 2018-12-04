@@ -41,14 +41,6 @@ public class jslManager {
                 jslObject o = objects.get(i);
                 o.beforeUpdate(et);
                 o.update(et);
-
-                for(int j=objects.size()-1; j>=0; j--) {
-                    jslObject other = objects.get(j);
-                    if(other != o) {
-                        o.collisionBox.collision(other);
-                    }
-                }
-
                 o.afterUpdate(et);
             }
         }

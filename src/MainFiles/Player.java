@@ -8,11 +8,13 @@ import java.awt.image.BufferedImage;
 public class Player extends jslObject {
 
     private BufferedImage texture = Texture.playerImg;
+    private CollisionBox collisionBox;
 
     public Player(float x, float y, float w, float h) {
         super(x, y, w, h);
         this.setLabel(jslLabel.PLAYER);
         this.setRotateToCenter();
+        this.collisionBox = new CollisionBox(this);
     }
 
     public void update(float et) {
