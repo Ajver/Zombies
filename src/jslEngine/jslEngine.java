@@ -176,8 +176,7 @@ public abstract class jslEngine extends Canvas implements Runnable, KeyListener,
     private void changeCursor() {
         if(jslCursor.cursorChanged) {
             setCursor(jslCursor.cursor);
-        }else {
-            jslCursor.setCursor(jslCursor.DEFAULT);
+            jslCursor.reset();
         }
     }
 

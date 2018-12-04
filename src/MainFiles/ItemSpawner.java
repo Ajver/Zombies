@@ -32,21 +32,11 @@ public class ItemSpawner extends jslObject {
 
         if(nextItemTimer.update()) {
             Random r = new Random();
-            switch (r.nextInt(10)) {
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                    jsl.add(new Ammo(getX(), getY(), 32, 32, jsl, this));
-                    break;
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                    jsl.add(new Health(getX(), getY(), 32, 32, jsl, this));
-                    break;
+            int ran = r.nextInt(100);
+            if(ran < 65) {
+                jsl.add(new Ammo(getX(), getY(), 32, 32, jsl, this));
+            }else {
+                jsl.add(new Health(getX(), getY(), 32, 32, jsl, this));
             }
             hasItem = true;
             nextItemTimer.setDuration(r.nextInt(5) + 10);

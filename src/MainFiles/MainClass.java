@@ -65,7 +65,8 @@ public class MainClass extends jslEngine {
         themeMusic = new jslSound("res/sounds/theme.wav");
         themeMusic.setLevel(0.7f);
         themeMusic.loop();
-        jslCursor.setCursor(jslCursor.MOVE);
+        //jslCursor.setCursor(jslCursor.MOVE);
+        jslCursor.setCursor("res/img/Crosshair.png");
     }
 
     protected void update(float et) {

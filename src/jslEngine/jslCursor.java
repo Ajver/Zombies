@@ -16,5 +16,13 @@ public class jslCursor {
         cursorChanged = true;
     }
 
+    public static void setCursor(String path) {
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Image image = tk.getImage(path);
+        cursor = tk.createCustomCursor(image,
+                new Point(image.getWidth(null)/2, image.getHeight(null)/2), "img");
+        cursorChanged = true;
+    }
+
     public static void reset() { cursorChanged = false; }
 }
