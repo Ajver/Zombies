@@ -2,6 +2,7 @@ package MainFiles;
 
 import jslEngine.jslManager;
 import jslEngine.jslSound;
+import jslEngine.jslTimer;
 import jslEngine.jslVector2;
 
 import java.awt.*;
@@ -14,7 +15,7 @@ public class Shotgun {
     private int mx = 0, my = 0;
 
     private float frameRate = 4.0f;
-    private float timer = 1.0f / frameRate;
+    private jslTimer shotTimer;
     private boolean ready = false;
 
     private boolean isShoting = false;
@@ -25,16 +26,14 @@ public class Shotgun {
         this.jsl = jsl;
         this.shotSound = new jslSound("res/sounds/shot.wav");
         this.shotSound.setLevel(0.55f);
+        this.shotTimer = new jslTimer(1.0f / frameRate);
+        this.shotTimer.start();
     }
 
     public void update(float et) {
-        if(!ready) {
-            timer -= et;
-
-            if (timer <= 0) {
-                timer = 1.0f / frameRate;
-                ready = true;
-            }
+        if(shotTimer.update()) {
+            ready = true;
+            shotTimer.stop();
         }
 
         if(isShoting) {
@@ -50,6 +49,7 @@ public class Shotgun {
     private void shot() {
         if(ready) {
             if(HUD.getAmmo()) {
+                shotTimer.restart();
                 shotSound.play();
                 ready = false;
 

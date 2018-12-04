@@ -14,6 +14,7 @@ public class HUD {
     private static int leftAmmo;
     private static int ammo;
     private static jslTimer reloadTimer = new jslTimer(2.0f);
+    private static jslSound reloadSound = new jslSound("res/sounds/reload.wav");
 
     private static float x, y, w, h;
     private static float padding = 2.0f;
@@ -43,6 +44,11 @@ public class HUD {
     }
 
     public static boolean getAmmo() {
+        // Do not shot while reloading
+        if(reloadTimer.isRunning()) {
+            return false;
+        }
+
         if(ammo > 0) {
             ammo--;
 
@@ -62,6 +68,7 @@ public class HUD {
                 if(ammo < magazineSize) {
                     // Start reloading from begin
                     reloadTimer.restart();
+                    reloadSound.play();
                 }
             }
         }
@@ -100,6 +107,8 @@ public class HUD {
         hp = maxHp;
         ammo = magazineSize;
         addMagazine(2);
+
+        reloadSound.setLevel(0.75f);
 
         w = 300.0f;
         h = 25.0f;
