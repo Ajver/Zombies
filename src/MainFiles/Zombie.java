@@ -57,6 +57,7 @@ public class Zombie extends jslObject {
                 } else {
                     switch (other.getLabel()) {
                         case PLAYER:
+                            Camera.shake(500);
                         case WALL:
                         case ZOMBIE:
                             collisionBox.bound(other);

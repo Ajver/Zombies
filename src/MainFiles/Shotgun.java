@@ -48,6 +48,8 @@ public class Shotgun {
                 shotSound.play();
                 ready = false;
 
+                Camera.shake(400);
+
                 jslVector2 v = new jslVector2(this.mx - MainClass.WW * 0.5f, this.my - MainClass.WH * 0.5f);
                 v.normalize();
                 v.multiply(1200.0f);

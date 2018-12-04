@@ -1,43 +1,74 @@
 package MainFiles;
 
 import jslEngine.jslObject;
+import jslEngine.jslVector2;
+
+import java.util.Random;
 
 public class Camera {
 
-    private float x, y;
-    private float velX, velY;
+    private static float x, y;
+    private static float velX, velY;
 
-    private jslObject o;
+    private static boolean isShaking = false;
+    private static jslVector2 vShake;
+    private static float power = 0.0f;
+
+    private static jslObject o;
 
 
     public Camera(jslObject o) {
-        this.o = o;
-
-        this.x = o.getX() - MainClass.WW / 2.0f + o.getW() / 2.0f;
-        this.y = o.getY() - MainClass.WH / 2.0f + o.getH() / 2.0f;
+        focus(o);
     }
 
-    public void update(float et) {
+    public static void update(float et) {
         setVelocity();
 
-        x += velX * et;
-        y += velY * et;
+        if(isShaking) {
+            if(power > 0.1f) {
+                shake(power * (0.8f - et * 4.0f));
+            }else {
+                vShake.set(0, 0);
+                isShaking = false;
+            }
+        }
+
+        x += (velX + vShake.x) * et;
+        y += (velY + vShake.y) * et;
     }
 
-    public void focus(jslObject o) {
+    public static void focus(jslObject o) {
         if(o != null) {
-            this.o = o;
+            Camera.o = o;
+
+            x = o.getX() - MainClass.WW / 2.0f + o.getW() / 2.0f;
+            y = o.getY() - MainClass.WH / 2.0f + o.getH() / 2.0f;
+
+            vShake = new jslVector2(0, 0);
         }
     }
 
-    private void setVelocity() {
+    private static void setVelocity() {
         if(o != null) {
             float speed = 7.0f;
-            this.velX = ((o.getX() - MainClass.WW / 2.0f + o.getW() / 2.0f) - this.x) * speed;
-            this.velY = ((o.getY() - MainClass.WH / 2.0f + o.getH() / 2.0f) - this.y) * speed;
+            velX = ((o.getX() - MainClass.WW / 2.0f + o.getW() / 2.0f) - x) * speed;
+            velY = ((o.getY() - MainClass.WH / 2.0f + o.getH() / 2.0f) - y) * speed;
         }
     }
 
-    public float getX() { return x; }
-    public float getY() { return y; }
+    public static void shake(float power) {
+        isShaking = true;
+
+        Random r = new Random();
+        float x = (r.nextInt(100) - 50) / 50.0f;
+        float y = (float)Math.sqrt(1.0f - x*x) - 0.5f;
+
+        vShake.set(x, y);
+        vShake.multiply(power);
+
+        Camera.power = power;
+    }
+
+    public static float getX() { return x; }
+    public static float getY() { return y; }
 }

@@ -17,7 +17,6 @@ public class MainClass extends jslEngine {
 
     private Player player;
     private Shotgun shotgun;
-    private Camera camera;
     private Map map;
 
     private jslSound themeMusic;
@@ -58,7 +57,7 @@ public class MainClass extends jslEngine {
         player = (Player)jsl.getObject(jslLabel.PLAYER);
         jsl.add(new PlayerController(player, 350.0f));
 
-        camera = new Camera(player);
+        Camera.focus(player);
         shotgun = new Shotgun(player, jsl);
 
         Zombie.fillZombies(creatureSize, creatureSize, jsl);
@@ -70,8 +69,8 @@ public class MainClass extends jslEngine {
     }
 
     protected void update(float et) {
-        camera.update(et);
-        jsl.setTranslate(-camera.getX(), -camera.getY());
+        Camera.update(et);
+        jsl.setTranslate(-Camera.getX(), -Camera.getY());
         shotgun.update(et);
         HUD.update(et);
     }
