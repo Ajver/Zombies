@@ -124,12 +124,14 @@ public class Zombie extends jslObject {
     }
 
     public void render(Graphics g) {
-        g.drawImage(texture, (int)getX(), (int)getY(), (int)getW(), (int)getH(), null);
+        ((Graphics2D)g).rotate(getRotate(), getX() + getRotateX(), getY() + getRotateY());
+
+        g.drawImage(texture, (int)getX(), (int)getY(), (int)getW(), (int)getH(),null);
+
+        ((Graphics2D)g).rotate(-getRotate(), getX() + getRotateX(), getY() + getRotateY());
     }
 
     public static void newZombie(jslManager jsl, float x, float y) {
-        long start = System.currentTimeMillis();
-
         if(zombies.isEmpty()) {
             return;
         }
@@ -137,9 +139,6 @@ public class Zombie extends jslObject {
         Zombie z = zombies.pop();
         z.reset(x, y);
         jsl.add(z);
-
-        long stop = System.currentTimeMillis();
-        System.out.println("New zombie time: " + (stop-start));
     }
 
     public static void fillZombies(float w, float h, jslManager jsl) {

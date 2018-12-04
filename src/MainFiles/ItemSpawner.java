@@ -6,9 +6,12 @@ import jslEngine.jslObject;
 import jslEngine.jslTimer;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 public class ItemSpawner extends jslObject {
+
+    private BufferedImage image = Texture.itemSpawner;
 
     private jslTimer nextItemTimer;
     private jslManager jsl;
@@ -49,7 +52,6 @@ public class ItemSpawner extends jslObject {
     }
 
     public void render(Graphics g) {
-        g.setColor(new Color(128, 128, 128));
-        g.fillOval((int)getX(), (int)getY(), (int)getW(), (int)getH());
+        g.drawImage(image, (int)getX(), (int)getY(), null);
     }
 }

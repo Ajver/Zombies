@@ -3,12 +3,18 @@ package MainFiles;
 import jslEngine.jslLabel;
 import jslEngine.jslManager;
 import jslEngine.jslObject;
+import jslEngine.jslSound;
+
+import java.awt.image.BufferedImage;
 
 public class Item extends jslObject {
 
     private jslManager jsl;
     private ItemSpawner spawner;
     private CollisionBox collisionBox;
+
+    protected BufferedImage image;
+    protected jslSound pickupSound;
 
     public Item(float x, float y, float w, float h, jslManager jsl, ItemSpawner spawner) {
         super(x, y, w, h);

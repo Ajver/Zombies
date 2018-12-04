@@ -97,22 +97,6 @@ public class jslObject {
     public float getTranslateX() { return (isTranslating ? translateX : 0); }
     public float getTranslateY() { return (isTranslating ? translateY : 0); }
     protected void update(float et) {}
-    public void beforeRender(Graphics g) {
-        if(isTranslating) {
-            g.translate((int)translateX, (int)translateY);
-        }
-        if(rotate != 0.0f) {
-            ((Graphics2D)g).rotate(getRotate(), getX() + getRotateX(), getY() + getRotateY());
-        }
-    }
-    public void afterRender(Graphics g) {
-        if(rotate != 0.0f) {
-            ((Graphics2D)g).rotate(-getRotate(), getX() + getRotateX(), getY() + getRotateY());
-        }
-        if(isTranslating) {
-            g.translate(-(int)translateX, -(int)translateY);
-        }
-    }
     protected void render(Graphics g) {}
     public boolean isPointIn(float px, float py) {
         if(rotate != 0.0f) {

@@ -43,13 +43,10 @@ public class Player extends jslObject {
     }
 
     public void render(Graphics g) {
-//
-//        g.setColor(new Color(135, 111, 255));
-//        g.fillOval((int)getX(), (int)getY(), (int)getW(), (int)getH());
-//
-//        g.setColor(new Color(46, 148, 34));
-//        g.fillRect((int)(getX() + getW() * 0.5f - 4), (int)(getY() - getH() * 0.5f), 8, 32);
+        ((Graphics2D)g).rotate(getRotate(), getX() + getRotateX(), getY() + getRotateY());
 
         g.drawImage(texture, (int)getX(), (int)getY(), (int)getW(), (int)getH(), null);
+
+        ((Graphics2D)g).rotate(-getRotate(), getX() + getRotateX(), getY() + getRotateY());
     }
 }

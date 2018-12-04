@@ -53,9 +53,7 @@ public class jslManager {
             }
             for(int i=0; i<objects.size(); i++) {
                 jslObject o = objects.get(i);
-                o.beforeRender(g);
                 o.render(g);
-                o.afterRender(g);
             }
             if(isTranslating) {
                 g.translate(-(int) translateX, -(int) translateY);

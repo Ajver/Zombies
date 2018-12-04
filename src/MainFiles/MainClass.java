@@ -25,6 +25,10 @@ public class MainClass extends jslEngine {
         start("Zombies", WindowType.FULLSCREEN);
 //        start("Zombies", WW, WH);
         setAntialiasing(true);
+
+        jslSound pickupSound = new jslSound("res/sounds/pickupAmmo.wav");
+        pickupSound.setLevel(0.7f);
+        pickupSound.play();
     }
 
     public void onCreate() {
