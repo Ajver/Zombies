@@ -1,6 +1,7 @@
 package MainFiles;
 
 import jslEngine.jslManager;
+import jslEngine.jslSound;
 import jslEngine.jslVector2;
 
 import java.awt.*;
@@ -17,10 +18,13 @@ public class Shotgun {
     private boolean ready = false;
 
     private boolean isShoting = false;
+    private jslSound shotSound;
 
     public Shotgun(Player player, jslManager jsl) {
         this.player = player;
         this.jsl = jsl;
+        this.shotSound = new jslSound("res/sounds/shot.wav");
+        this.shotSound.setLevel(0.55f);
     }
 
     public void update(float et) {
@@ -34,7 +38,7 @@ public class Shotgun {
         }
 
         if(isShoting) {
-            shoot();
+            shot();
         }
     }
 
@@ -43,9 +47,10 @@ public class Shotgun {
 
     }
 
-    private void shoot() {
+    private void shot() {
         if(ready) {
             if(HUD.getAmmo()) {
+                shotSound.play();
                 ready = false;
 
                 jslVector2 v = new jslVector2(this.mx - MainClass.WW * 0.5f, this.my - MainClass.WH * 0.5f);
@@ -66,7 +71,7 @@ public class Shotgun {
 
         isShoting = true;
 
-        shoot();
+        shot();
     }
 
     public void onRelease(MouseEvent e) {
