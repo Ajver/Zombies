@@ -92,8 +92,8 @@ public class MainClass extends jslEngine {
 
         HUD.render(g);
 
-        g.setColor(new Color(255, 255,255));
-        g.drawString("FPS: " + getFpsCount(), 20, 50);
+//        g.setColor(new Color(255, 255,255));
+//        g.drawString("FPS: " + getFpsCount(), 20, 50);
     }
 
     protected void onMousePressed(MouseEvent e) {

@@ -36,10 +36,12 @@ public class ItemSpawner extends jslObject {
         if(nextItemTimer.update()) {
             Random r = new Random();
             int ran = r.nextInt(100);
+            float x = getCenterX() - 16;
+            float y = getCenterY() - 16;
             if(ran < 65) {
-                jsl.add(new Ammo(getX(), getY(), 32, 32, jsl, this));
+                jsl.add(new Ammo(x, y, 32, 32, jsl, this));
             }else {
-                jsl.add(new Health(getX(), getY(), 32, 32, jsl, this));
+                jsl.add(new Health(x, y, 32, 32, jsl, this));
             }
             hasItem = true;
             nextItemTimer.setDuration(r.nextInt(5) + 10);
