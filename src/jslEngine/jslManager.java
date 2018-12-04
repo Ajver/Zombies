@@ -166,7 +166,7 @@ public class jslManager {
             }
         }
     }
-    public void addMouseInput(jslObject o) { mouseInputs.add(o); }
+    public void addMouseInput(jslObject o) { mouseInputs.add(o); sortObjects(); }
     public ArrayList<jslObject> getMouseInputs() { return mouseInputs; }
     public jslObject getMouseInput(int i) { return mouseInputs.get(i); }
     public void removeAllMouseInputs() { mouseInputs.clear(); }
