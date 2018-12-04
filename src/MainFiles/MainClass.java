@@ -22,7 +22,7 @@ public class MainClass extends jslEngine {
     private jslSound themeMusic;
 
     private MainClass() {
-        start("Zombies", WindowType.jslFullscreen);
+        start("Zombies", WindowType.FULLSCREEN);
 //        start("Zombies", WW, WH);
         setAntialiasing(true);
     }

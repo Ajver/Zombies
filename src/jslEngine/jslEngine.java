@@ -43,9 +43,9 @@ public abstract class jslEngine extends Canvas implements Runnable, KeyListener,
 
     // Which type is created window
     public enum WindowType {
-        jslNormal, // Resizable
-        jslStatic, // No resizable
-        jslFullscreen
+        NORMAL, // Resizable
+        STATIC, // No resizable
+        FULLSCREEN
     }
     // Private variables used to run
     private static final long serialVersionUID = 8619356773422621193L;
@@ -79,7 +79,7 @@ public abstract class jslEngine extends Canvas implements Runnable, KeyListener,
         windowType = type;
         isWindow = true;
         frame = new JFrame(title);
-        if(type == WindowType.jslFullscreen) {
+        if(type == WindowType.FULLSCREEN) {
             frame.setUndecorated(true);
         }
         frame.add(this);
@@ -98,11 +98,11 @@ public abstract class jslEngine extends Canvas implements Runnable, KeyListener,
         int WW, WH, sw, sh;
         sw = (int)tk.getScreenSize().getWidth();
         sh = (int)tk.getScreenSize().getHeight();
-        if(this.windowType == WindowType.jslStatic) {
+        if(this.windowType == WindowType.STATIC) {
             WW = w + 6;
             WH = h + 29;
             this.frame.setResizable(false);
-        }else if(this.windowType == WindowType.jslNormal) {
+        }else if(this.windowType == WindowType.NORMAL) {
             WW = w + 16;
             WH = h + 39;
         }else {
@@ -110,7 +110,7 @@ public abstract class jslEngine extends Canvas implements Runnable, KeyListener,
             WH = sh;
             this.frame.setResizable(false);
         }
-        if(this.windowType != WindowType.jslFullscreen) {
+        if(this.windowType != WindowType.FULLSCREEN) {
             this.frame.setLocation((sw - WW) / 2, (sh - WH) / 2);
         }
         this.setSize(WW, WH);
@@ -135,7 +135,7 @@ public abstract class jslEngine extends Canvas implements Runnable, KeyListener,
         start(title, defaultW, defaultH, type);
     }
     protected void start(String title, int w, int h) {
-        start(title, w, h, WindowType.jslStatic);
+        start(title, w, h, WindowType.STATIC);
     }
     protected void start(String title, int w, int h, WindowType type) {
         if(isRunning) return;
