@@ -55,6 +55,7 @@ public class ItemSpawner extends jslObject {
 
     public void clear() {
         this.hasItem = false;
+        this.nextItemTimer.restart();
     }
 
     public void render(Graphics g) {

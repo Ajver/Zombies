@@ -40,6 +40,15 @@ public class jslObject {
     public void setH(float h) {
         this.h = h;
     }
+    public void rotate() {
+        rotate(getVelR());
+    }
+    public void rotate(float theta) {
+        this.rotate += theta;
+    }
+    public void move(float et) {
+        move(getVelX() * et, getVelY() * et);
+    }
     public void move(float x, float y) {
         this.setX(this.x + x);
         this.setY(this.y + y);
@@ -87,13 +96,7 @@ public class jslObject {
     public float getRotateY() { return rotateY; }
     public float getTranslateX() { return (isTranslating ? translateX : 0); }
     public float getTranslateY() { return (isTranslating ? translateY : 0); }
-    public void beforeUpdate(float et) {
-        x += velX * et;
-        y += velY * et;
-        rotate += velR * et;
-    }
     protected void update(float et) {}
-    public void afterUpdate(float et) {}
     public void beforeRender(Graphics g) {
         if(isTranslating) {
             g.translate((int)translateX, (int)translateY);

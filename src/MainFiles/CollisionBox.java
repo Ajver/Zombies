@@ -1,15 +1,28 @@
 package MainFiles;
 
+import jslEngine.jslManager;
 import jslEngine.jslObject;
 
 import java.awt.*;
 
 public class CollisionBox {
 
-    private jslObject o;
+    protected jslObject o;
 
     public CollisionBox(jslObject o) {
         this.o = o;
+    }
+
+    public void collision(jslManager jsl) {
+        // Collision
+        for(int i=0; i<jsl.getObjects().size(); i++) {
+            jslObject other = jsl.getObject(i);
+            if(other != o) {
+                if(isCollision(other)) {
+                    onCollision(other);
+                }
+            }
+        }
     }
 
     public boolean isCollision(jslObject other) {
@@ -54,10 +67,13 @@ public class CollisionBox {
             }
         }
     }
+
     public Rectangle getBounds() {
         return new Rectangle((int)o.getX(), (int)o.getY(), (int)o.getW(), (int)o.getH());
     }
     public Rectangle getBounds(jslObject o) {
         return new Rectangle((int)o.getX(), (int)o.getY(), (int)o.getW(), (int)o.getH());
     }
+
+    public void onCollision(jslObject other) {}
 }

@@ -60,7 +60,7 @@ public class Map {
                     if(r == 255 && g == 255 && b == 255) {
                         o = new Block(x, y, MainClass.blockSize, MainClass.blockSize, jslLabel.WALL);
                     }else if(r == 0 && g == 0 && b == 255){
-                        o = new Player(x, y, MainClass.creatureSize, MainClass.creatureSize);
+                        o = new Player(x, y, MainClass.creatureSize, MainClass.creatureSize, jsl);
                     }else if(r == 0 && g == 255 && b == 0) {
                         o = new ItemSpawner(x, y, MainClass.creatureSize, MainClass.creatureSize, jsl);
                     }else if(r == 255 && g == 0 && b == 0) {

@@ -9,16 +9,29 @@ public class Player extends jslObject {
 
     private BufferedImage texture = Texture.playerImg;
     private CollisionBox collisionBox;
+    private jslManager jsl;
 
-    public Player(float x, float y, float w, float h) {
+    public Player(float x, float y, float w, float h, jslManager jsl) {
         super(x, y, w, h);
         this.setLabel(jslLabel.PLAYER);
         this.setRotateToCenter();
-        this.collisionBox = new CollisionBox(this);
+        this.jsl = jsl;
+        this.collisionBox = new CollisionBox(this) {
+            @Override
+            public void onCollision(jslObject other) {
+                switch (other.getLabel()) {
+                    case WALL:
+                    case ZOMBIE:
+                        bound(other);
+                        break;
+                }
+            }
+        };
     }
 
     public void update(float et) {
-
+        move(et);
+        collisionBox.collision(jsl);
     }
 
     public void onCollision(jslObject other) {

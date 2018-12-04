@@ -41,6 +41,9 @@ public class PlayerController extends jslKeyInput {
                 isRight = true;
                 player.setVelX(vel);
                 break;
+            case KeyEvent.VK_R:
+                HUD.reload();
+                break;
         }
 
         setVel();

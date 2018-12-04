@@ -38,10 +38,7 @@ public class jslManager {
     public void update(float et) {
         if(autoUpdate) {
             for(int i=objects.size()-1; i>=0; i--) {
-                jslObject o = objects.get(i);
-                o.beforeUpdate(et);
-                o.update(et);
-                o.afterUpdate(et);
+                objects.get(i).update(et);
             }
         }
     }

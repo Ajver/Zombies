@@ -40,7 +40,31 @@ public class Zombie extends jslObject {
         this.vel = 100.0f;
 
         soundTimer = new jslTimer((r.nextInt(4) + 3));
-        collisionBox = new CollisionBox(this);
+        collisionBox = new CollisionBox(this) {
+            @Override
+            public void onCollision(jslObject other) {
+                if (other.is(jslLabel.BULLET)) {
+                    jslVector2 v = new jslVector2(other.getVelX(), other.getVelY());
+                    v.normalize();
+                    v.multiply(16);
+                    move(v.x, v.y);
+                    jsl.removeObject(other);
+                    if (!hp.addHp(-13 - r.nextInt(20))) {
+                        zombies.add((Zombie)o);
+                        jsl.removeObject(hp);
+                        jsl.removeObject(o);
+                    }
+                } else {
+                    switch (other.getLabel()) {
+                        case PLAYER:
+                        case WALL:
+                        case ZOMBIE:
+                            collisionBox.bound(other);
+                            break;
+                    }
+                }
+            }
+        };
 
         for(int i=0; i<zombieSounds.length; i++) {
             zombieSounds[i] = new jslSound("res/sounds/zombie" + (i+1) + ".wav");
@@ -62,7 +86,7 @@ public class Zombie extends jslObject {
             jslVector2 v = new jslVector2(player.getCenterX() - getCenterX(), player.getCenterY() - getCenterY());
             v.normalize();
             v.multiply(vel);
-            setVel(v.x, v.y);
+            move(v.x * et, v.y * et);
 
             float theta = (float) Math.atan2(v.x, v.y);
             setRotate(2 * (float) Math.PI - theta);
@@ -74,38 +98,10 @@ public class Zombie extends jslObject {
         }
 
         // Collision
-        for(int i=0; i<jsl.getObjects().size(); i++) {
-            jslObject other = jsl.getObject(i);
-            if(other != this) {
-                if(collisionBox.isCollision(other)) {
-                    if (other.is(jslLabel.BULLET)) {
-                        jslVector2 v = new jslVector2(other.getVelX(), other.getVelY());
-                        v.normalize();
-                        v.multiply(16);
-                        move(v.x, v.y);
-                        jsl.removeObject(other);
-                        if (!hp.addHp(-13 - r.nextInt(20))) {
-                            zombies.add(this);
-                            jsl.removeObject(hp);
-                            jsl.removeObject(this);
-                        }
-                    } else {
-                        switch (other.getLabel()) {
-                            case PLAYER:
-                            case WALL:
-                            case ZOMBIE:
-                                collisionBox.bound(other);
-                                break;
-                        }
-                    }
-                }
-            }
-        }
+        collisionBox.collision(jsl);
 
         hp.setPosition(getX(), getY());
-    }
 
-    public void afterUpdate(float et) {
         if(!isReady) {
             timer -= et;
 
