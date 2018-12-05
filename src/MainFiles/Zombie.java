@@ -50,6 +50,9 @@ public class Zombie extends jslObject {
                     move(v.x, v.y);
                     jsl.removeObject(other);
                     if (!hp.addHp(-13 - r.nextInt(20))) {
+                        Stain stain = new Stain(o.getX(), o.getY(), o.getW(), o.getH());
+                        stain.setRotate(o.getRotate());
+                        jsl.add(stain);
                         zombies.add((Zombie)o);
                         jsl.removeObject(hp);
                         jsl.removeObject(o);

@@ -17,6 +17,8 @@ public class Texture {
     public static BufferedImage background = null;
     public static BufferedImage ceil = null;
 
+    public static BufferedImage[] stains = new BufferedImage[4];
+
     public Texture() { }
 
     public static boolean loadTextures() {
@@ -31,6 +33,11 @@ public class Texture {
 
             background = ImageIO.read(new File("res/map/Background.png"));
             ceil = ImageIO.read(new File("res/map/Ceil.png"));
+
+            for(int i=1; i<=4; i++) {
+                stains[i-1] = ImageIO.read(new File("res/img/stain" + i + ".png"));
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
             return false;

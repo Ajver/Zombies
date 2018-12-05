@@ -27,7 +27,7 @@ public class jslTimer {
     }
 
     public void restart() {
-        reset();
+        isRunning = false;
         start();
     }
 
@@ -44,6 +44,13 @@ public class jslTimer {
             reset();
             isRunning = true;
         }
+    }
+
+    public float getProgress() {
+        long start = timer - duration;
+        long diff = System.currentTimeMillis() - start;
+
+        return (float)diff / duration;
     }
 
     public void setDuration(float duration) {
