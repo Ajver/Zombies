@@ -31,7 +31,7 @@ public class Texture {
             ammoImg = ImageIO.read(new File("res/img/Ammo.png"));
             healthImg = ImageIO.read(new File("res/img/Heart.png"));
 
-            background = ImageIO.read(new File("res/map/Background.png"));
+            background = ImageIO.read(new File("res/map/Background.jpg"));
             ceil = ImageIO.read(new File("res/map/Ceil.png"));
 
             for(int i=1; i<=4; i++) {
