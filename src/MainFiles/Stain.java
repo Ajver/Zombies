@@ -14,7 +14,8 @@ public class Stain extends jslObject {
     private int step = 0;
 
     public Stain(float x, float y, float w, float h) {
-        super(x, y, w, h);;
+        super(x, y, w, h);
+        setRotateToCenter();
         setLabel(jslLabel.GROUND);
         timer = new jslTimer(0.15f);
     }

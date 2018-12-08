@@ -28,8 +28,6 @@ public class Map {
             int w = mapImg.getWidth();
             int h = mapImg.getHeight();
 
-            Player player = null;
-
             for(int yy=0; yy<h; yy++) {
                 for(int xx=0; xx<w; xx++) {
                     jslObject o = null;
@@ -60,10 +58,6 @@ public class Map {
                         jsl.add(o);
                     }
                 }
-            }
-
-            if(player != null) {
-                jsl.add(player);
             }
 
             return true;

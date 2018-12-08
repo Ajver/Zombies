@@ -28,9 +28,4 @@ public class ZombieSpawner extends jslObject {
             nextZombieTimer.setDuration(r.nextInt(6) + 5.0f);
         }
     }
-
-    public void render(Graphics g) {
-        g.setColor(new Color(126, 255, 0));
-        g.fillRect((int)getX(), (int)getY(), (int)getW(), (int)getH());
-    }
 }
