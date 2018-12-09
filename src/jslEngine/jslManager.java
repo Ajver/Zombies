@@ -311,27 +311,36 @@ public class jslManager {
         ArrayList<jslObject> sortedMI = new ArrayList<>();
 
         for(int j=0; j<renderOrder.size(); j++) {
+            jslLabel l = renderOrder.get(j);
             // Sort objects to render
-            for(int i=objects.size()-1; i>=0; i--) {
+            for(int i=0; i<objects.size(); ) {
                 jslObject o = objects.get(i);
 
-                if(o.is(renderOrder.get(j))) {
+                if(o.is(l)) {
                     sortedOb.add(o);
                     objects.remove(i);
-                }else if(!renderOrder.contains(o.getLabel())) {
-                    renderOrder.add(o.getLabel());
+                }else {
+                    if(!renderOrder.contains(o.getLabel())) {
+                        renderOrder.add(o.getLabel());
+                    }
+
+                    i++;
                 }
             }
 
             // Sort mouse inputs
-            for(int i=mouseInputs.size()-1; i>=0; i--) {
+            for(int i=0; i<mouseInputs.size(); ) {
                 jslObject o = mouseInputs.get(i);
 
-                if(o.is(renderOrder.get(j))) {
+                if(o.is(l)) {
                     sortedMI.add(o);
                     mouseInputs.remove(i);
-                }else if(!renderOrder.contains(o.getLabel())) {
-                    renderOrder.add(o.getLabel());
+                }else {
+                    if(!renderOrder.contains(o.getLabel())) {
+                        renderOrder.add(o.getLabel());
+                    }
+
+                    i++;
                 }
             }
         }

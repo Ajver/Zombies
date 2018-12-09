@@ -76,10 +76,11 @@ public class MainClass extends jslEngine {
         Zombie.fillZombies(MainClass.creatureSize, MainClass.creatureSize, jsl);
         manager = new LevelManager(5.0f, jsl);
 
+        jslCursor.setCursor("res/img/Crosshair.png");
+
         themeMusic = new jslSound("res/sounds/theme.wav");
         themeMusic.setLevel(0.7f);
         themeMusic.loop();
-        jslCursor.setCursor("res/img/Crosshair.png");
     }
 
     protected void update(float et) {
@@ -94,17 +95,12 @@ public class MainClass extends jslEngine {
         HUD.update(et);
         map.update(et);
 
-
         switch (manager.update()) {
             case GAME:
                 // Restart zombie spawners timers
                 for(int i=0; i<zombieSpawners.size(); i++) {
                     zombieSpawners.get(i).restart();
                 }
-                break;
-            case PAUSE:
-                // Break between levels (NOT game pause)
-
                 break;
             case END:
                 // Stop item spawners (and remove the items)
@@ -113,7 +109,7 @@ public class MainClass extends jslEngine {
                 }
                 jsl.removeObject(jslLabel.ITEM);
 
-                // Start leave animation
+                // Show arrow
 
                 break;
         }
@@ -132,7 +128,6 @@ public class MainClass extends jslEngine {
         map.renderCeil(g);
         HUD.render(g);
 
-        // Text rendering
         g.setColor(new Color(255, 255, 255));
 
         if(manager.getLevel() != 0) {
