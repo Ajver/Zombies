@@ -70,6 +70,7 @@ public class MainClass extends jslEngine {
         Camera.focus(player);
         shotgun = new Shotgun(player, jsl);
 
+        Zombie.fillZombies(MainClass.creatureSize, MainClass.creatureSize, jsl);
         manager = new LevelManager(1.0f, 1.0f, jsl);
 
         themeMusic = new jslSound("res/sounds/theme.wav");

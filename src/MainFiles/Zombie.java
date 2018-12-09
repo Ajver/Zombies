@@ -10,6 +10,7 @@ import java.util.Random;
 public class Zombie extends jslObject {
 
     private static int zombiesNr = 0;
+    private static int maxZombies = 20;
     private static LinkedList<Zombie> zombies = new LinkedList<>();
 
     private BufferedImage texture = Texture.zombieImg;
@@ -55,7 +56,7 @@ public class Zombie extends jslObject {
                         Stain stain = new Stain(o.getX(), o.getY(), o.getW(), o.getH());
                         stain.setRotate(o.getRotate());
                         jsl.add(stain);
-//                        zombies.add((Zombie)o);
+                        zombies.add((Zombie)o);
                         jsl.removeObject(hp);
                         jsl.removeObject(o);
                     }
@@ -141,6 +142,11 @@ public class Zombie extends jslObject {
             return false;
         }
 
+        // If all zombies, that should be spawned are spawned, do not create next
+        if(zombies.size() + zombiesNr == maxZombies) {
+            return false;
+        }
+
         Zombie z = zombies.pop();
         z.reset(x, y);
         jsl.add(z);
@@ -148,9 +154,8 @@ public class Zombie extends jslObject {
         return true;
     }
 
-    public static void fillZombies(float w, float h, jslManager jsl, int nr) {
-        setZombiesNr(nr);
-        for(int i=0; i<nr; i++) {
+    public static void fillZombies(float w, float h, jslManager jsl) {
+        for(int i=0; i<maxZombies; i++) {
             zombies.add(new Zombie(w, h, jsl));
         }
     }

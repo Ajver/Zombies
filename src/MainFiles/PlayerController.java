@@ -11,7 +11,6 @@ public class PlayerController extends jslKeyInput {
     private boolean isUp = false, isDown = false, isLeft = false, isRight = false;
     private float vel;
     private jslVector2 vVel;
-    private final float sqrt2 = 1.41421f;
 
     public PlayerController(Player player, float vel) {
         this.player = player;

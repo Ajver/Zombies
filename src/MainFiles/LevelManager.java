@@ -59,29 +59,29 @@ public class LevelManager {
         switch (state) {
             case ENTER:
                 if(beginTimer.update()) {
-                    state = State.GAME;
-                    return State.GAME;
+                    return state = State.GAME;
                 }
                 break;
             case GAME:
                 if(Zombie.getZombiesNr() <= 0) {
-                    state = State.PAUSE;
                     pauseTimer.restart();
-                    return State.PAUSE;
+                    return state = State.PAUSE;
                 }
                 break;
             case PAUSE:
                 if(pauseTimer.update()) {
-                    state = State.GAME;
-                    level++;
-                    Zombie.fillZombies(MainClass.creatureSize, MainClass.creatureSize, jsl, 4 + level*3);
-                    return State.GAME;
+                    if(level < 5) {
+                        level++;
+                        Zombie.setZombiesNr(4 + level * 3);
+                        return state = State.GAME;
+                    }else {
+                        return state = State.LEAVE;
+                    }
                 }
                 break;
             case LEAVE:
                 if(leaveTimer.update()) {
-                    state = State.END;
-                    return State.END;
+                    return state = State.END;
                 }
                 break;
         }
