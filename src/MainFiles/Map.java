@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Map {
 
@@ -18,11 +19,11 @@ public class Map {
     private BufferedImage background = Texture.background;
     private BufferedImage ceil = Texture.ceil;
 
-    public Map(jslManager jsl) {
-        loadMap("res/map/Map.png", jsl);
+    public Map(jslManager jsl, ArrayList<ZombieSpawner> zombieSpawners) {
+        loadMap("res/map/Map.png", jsl, zombieSpawners);
     }
 
-    public boolean loadMap(String path, jslManager jsl) {
+    public boolean loadMap(String path, jslManager jsl, ArrayList<ZombieSpawner> zombieSpawners) {
         try {
             BufferedImage mapImg = ImageIO.read(new File(path));
 
@@ -80,7 +81,7 @@ public class Map {
                     }else if(r == 0 && g == 255 && b == 0) {
                         o = new ItemSpawner(x, y, MainClass.creatureSize, MainClass.creatureSize, jsl);
                     }else if(r == 255 && g == 0 && b == 0) {
-                        o = new ZombieSpawner(x, y, MainClass.creatureSize, MainClass.creatureSize, jsl);
+                        zombieSpawners.add(new ZombieSpawner(x, y, jsl));
                     }else if(r == 255 && g == 255 && b == 0) {
                         // Door
                     }else if(r == 153 && g == 153 && b == 0) {

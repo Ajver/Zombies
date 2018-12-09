@@ -22,7 +22,7 @@ public class Player extends jslObject {
                 switch (other.getLabel()) {
                     case WALL:
                     case ZOMBIE:
-                        //bound(other);
+                        bound(other);
                         break;
                 }
             }

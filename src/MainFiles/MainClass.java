@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -18,6 +19,9 @@ public class MainClass extends jslEngine {
     private Player player;
     private Shotgun shotgun;
     private Map map;
+    private LevelManager manager;
+
+    private ArrayList<ZombieSpawner> zombieSpawners = new ArrayList<>();
 
     private jslSound themeMusic;
 
@@ -58,7 +62,7 @@ public class MainClass extends jslEngine {
         blockSize = 64;
         creatureSize = 64;
 
-        map = new Map(jsl);
+        map = new Map(jsl, zombieSpawners);
 
         player = (Player)jsl.getObject(jslLabel.PLAYER);
         jsl.add(new PlayerController(player, 350.0f));
@@ -66,7 +70,7 @@ public class MainClass extends jslEngine {
         Camera.focus(player);
         shotgun = new Shotgun(player, jsl);
 
-        Zombie.fillZombies(creatureSize, creatureSize, jsl);
+        manager = new LevelManager(1.0f, 1.0f, jsl);
 
         themeMusic = new jslSound("res/sounds/theme.wav");
         themeMusic.setLevel(0.7f);
@@ -77,9 +81,33 @@ public class MainClass extends jslEngine {
     protected void update(float et) {
         Camera.update(et);
         jsl.setTranslate(-Camera.getX(), -Camera.getY());
+
+        for(int i=0; i<zombieSpawners.size(); i++) {
+            zombieSpawners.get(i).update();
+        }
+
         shotgun.update(et);
         HUD.update(et);
         map.update(et);
+
+
+        switch (manager.update()) {
+            case GAME:
+                // Restart zombie spawners timers
+                for(int i=0; i<zombieSpawners.size(); i++) {
+                    zombieSpawners.get(i).restart();
+                }
+                break;
+            case PAUSE:
+
+                break;
+            case LEAVE:
+                // Start leave animation
+                break;
+            case END:
+                // End game
+                break;
+        }
     }
 
     protected void beforeRender(Graphics g) {
@@ -95,6 +123,8 @@ public class MainClass extends jslEngine {
 
         g.setColor(new Color(255, 255,255));
         g.drawString("FPS: " + getFpsCount(), 20, 50);
+        g.drawString("Level: " + manager.getLevel(), 20, 100);
+        g.drawString("State: " + manager.getState(), 20, 130);
     }
 
     protected void onMousePressed(MouseEvent e) {

@@ -4,28 +4,36 @@ import jslEngine.jslManager;
 import jslEngine.jslObject;
 import jslEngine.jslTimer;
 
-import java.awt.*;
 import java.util.Random;
 
-public class ZombieSpawner extends jslObject {
+public class ZombieSpawner {
 
     private jslManager jsl;
     private jslTimer nextZombieTimer;
 
+    private float x, y;
+
     private Random r = new Random();
 
-    public ZombieSpawner(float x, float y, float w, float h, jslManager jsl) {
-        super(x, y, w, h);
+    public ZombieSpawner(float x, float y, jslManager jsl) {
+        this.x = x;
+        this.y = y;
         this.jsl = jsl;
 
-        nextZombieTimer = new jslTimer(r.nextInt(6) + 4.0f);
+        nextZombieTimer = new jslTimer(r.nextInt(4) + 1.0f);
         nextZombieTimer.start();
     }
 
-    public void update(float et) {
+    public void update() {
         if (nextZombieTimer.update()) {
-            Zombie.newZombie(jsl, getX(), getY());
-            nextZombieTimer.setDuration(r.nextInt(6) + 5.0f);
+            Zombie.newZombie(jsl, x, y);
+            restart();
         }
     }
+
+    public void restart() {
+        nextZombieTimer.setDuration(r.nextInt(3) + 3.0f);
+        nextZombieTimer.restart();
+    }
+
 }

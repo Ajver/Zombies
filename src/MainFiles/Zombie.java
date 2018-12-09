@@ -9,6 +9,7 @@ import java.util.Random;
 
 public class Zombie extends jslObject {
 
+    private static int zombiesNr = 0;
     private static LinkedList<Zombie> zombies = new LinkedList<>();
 
     private BufferedImage texture = Texture.zombieImg;
@@ -50,10 +51,11 @@ public class Zombie extends jslObject {
                     move(v.x, v.y);
                     jsl.removeObject(other);
                     if (!hp.addHp(-13 - r.nextInt(20))) {
+                        zombiesNr--;
                         Stain stain = new Stain(o.getX(), o.getY(), o.getW(), o.getH());
                         stain.setRotate(o.getRotate());
                         jsl.add(stain);
-                        zombies.add((Zombie)o);
+//                        zombies.add((Zombie)o);
                         jsl.removeObject(hp);
                         jsl.removeObject(o);
                     }
@@ -134,19 +136,25 @@ public class Zombie extends jslObject {
         ((Graphics2D)g).rotate(-getRotate(), getX() + getRotateX(), getY() + getRotateY());
     }
 
-    public static void newZombie(jslManager jsl, float x, float y) {
+    public static boolean newZombie(jslManager jsl, float x, float y) {
         if(zombies.isEmpty()) {
-            return;
+            return false;
         }
 
         Zombie z = zombies.pop();
         z.reset(x, y);
         jsl.add(z);
+
+        return true;
     }
 
-    public static void fillZombies(float w, float h, jslManager jsl) {
-        for(int i=0; i<20; i++) {
+    public static void fillZombies(float w, float h, jslManager jsl, int nr) {
+        setZombiesNr(nr);
+        for(int i=0; i<nr; i++) {
             zombies.add(new Zombie(w, h, jsl));
         }
     }
+
+    public static int getZombiesNr() { return zombiesNr; }
+    public static void setZombiesNr(int nr) { zombiesNr = nr; }
 }

@@ -14,7 +14,7 @@ public class Wall extends jslObject {
     }
 
     public void render(Graphics g) {
-        g.setColor(new Color(0,255, 0));
-        g.drawRect((int)getX(), (int)getY(), (int)getW(), (int)getH());
+//        g.setColor(new Color(0,255, 0));
+//        g.drawRect((int)getX(), (int)getY(), (int)getW(), (int)getH());
     }
 }
