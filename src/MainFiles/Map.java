@@ -3,6 +3,7 @@ package MainFiles;
 import jslEngine.jslLabel;
 import jslEngine.jslManager;
 import jslEngine.jslObject;
+import sun.applet.resources.MsgAppletViewer;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -28,8 +29,16 @@ public class Map {
             int w = mapImg.getWidth();
             int h = mapImg.getHeight();
 
+            boolean[][] checkedMap = new boolean[w][h];
+
             for(int yy=0; yy<h; yy++) {
                 for(int xx=0; xx<w; xx++) {
+                    if(checkedMap[xx][yy]) {
+                        continue;
+                    }else {
+                        checkedMap[xx][yy] = true;
+                    }
+
                     jslObject o = null;
 
                     int rgb = mapImg.getRGB(xx, yy);
@@ -41,7 +50,31 @@ public class Map {
                     float y = yy * MainClass.blockSize;
 
                     if(r == 255 && g == 255 && b == 255) {
-                        o = new Wall(x, y, MainClass.blockSize, MainClass.blockSize);
+                        boolean isHorizontalLine = false;
+                        float wallW = MainClass.blockSize;
+                        float wallH = MainClass.blockSize;
+                        for(int i=xx+1; i<w; i++) {
+                            int rgb2 = mapImg.getRGB(i, yy);
+                            if (rgb == rgb2 && !checkedMap[i][yy]) {
+                                checkedMap[i][yy] = true;
+                                isHorizontalLine = true;
+                                wallW += MainClass.blockSize;
+                            }else {
+                                break;
+                            }
+                        }
+                        if(!isHorizontalLine) {
+                            for (int i = yy + 1; i < h; i++) {
+                                int rgb2 = mapImg.getRGB(xx, i);
+                                if (rgb == rgb2 && !checkedMap[xx][i]) {
+                                    checkedMap[xx][i] = true;
+                                    wallH += MainClass.blockSize;
+                                }else {
+                                    break;
+                                }
+                            }
+                        }
+                        o = new Wall(x, y, wallW, wallH);
                     }else if(r == 0 && g == 0 && b == 255){
                         o = new Player(x, y, MainClass.creatureSize, MainClass.creatureSize, jsl);
                     }else if(r == 0 && g == 255 && b == 0) {

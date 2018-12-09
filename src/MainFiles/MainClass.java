@@ -48,6 +48,7 @@ public class MainClass extends jslEngine {
                 jslLabel.PLAYER,
                 jslLabel.ZOMBIE,
                 jslLabel.WALL,
+                jslLabel.DOOR,
                 jslLabel.ZOMBIE_HP,
                 jslLabel.DEFAULT);
 
