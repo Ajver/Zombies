@@ -7,11 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6aa3ca37-3d6c-484d-8628-87d3c5bf20e3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/MainFiles/ItemSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFiles/ItemSpawner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainFiles/LevelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFiles/LevelManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainFiles/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFiles/MainClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainFiles/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFiles/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jslEngine/jslManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jslEngine/jslManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainFiles/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainFiles/Zombie.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,25 +57,25 @@
         <counts>
           <entry key="groovy" value="21" />
           <entry key="html" value="23" />
-          <entry key="java" value="26993" />
+          <entry key="java" value="27677" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="21" />
           <entry key="HTML" value="23" />
-          <entry key="JAVA" value="26993" />
+          <entry key="JAVA" value="27677" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MainFiles/Zombie.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="145" column="27" selection-start-line="145" selection-start-column="27" selection-end-line="145" selection-end-column="27" />
+            <state relative-caret-position="317">
+              <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -91,7 +87,7 @@
         <entry file="file://$PROJECT_DIR$/src/jslEngine/jslManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="493">
-              <caret line="131" column="32" lean-forward="true" selection-start-line="131" selection-start-column="32" selection-end-line="131" selection-end-column="32" />
+              <caret line="131" column="32" selection-start-line="131" selection-start-column="32" selection-end-line="131" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -100,7 +96,7 @@
         <entry file="file://$PROJECT_DIR$/src/MainFiles/MainClass.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="208">
-              <caret line="109" column="60" lean-forward="true" selection-start-line="109" selection-start-column="60" selection-end-line="109" selection-end-column="60" />
+              <caret line="109" column="60" selection-start-line="109" selection-start-column="60" selection-end-line="109" selection-end-column="60" />
               <folding>
                 <element signature="e#4030#4031#0" expanded="true" />
                 <element signature="e#4064#4065#0" expanded="true" />
@@ -133,7 +129,7 @@
         <entry file="file://$PROJECT_DIR$/src/MainFiles/Stain.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="124">
-              <caret line="15" column="54" lean-forward="true" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+              <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -141,11 +137,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainFiles/LevelManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="60" column="32" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="32" />
+            <state relative-caret-position="406">
+              <caret line="84" column="43" lean-forward="true" selection-start-line="84" selection-start-column="43" selection-end-line="84" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -220,17 +216,17 @@
         <option value="$PROJECT_DIR$/src/MainFiles/Player.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/Wall.java" />
         <option value="$PROJECT_DIR$/../Haussystem-website/index.html" />
-        <option value="$PROJECT_DIR$/src/MainFiles/Zombie.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/PlayerController.java" />
         <option value="$PROJECT_DIR$/src/jslEngine/jslManager.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/ItemSpawner.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/Map.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/MainClass.java" />
         <option value="$PROJECT_DIR$/src/MainFiles/LevelManager.java" />
+        <option value="$PROJECT_DIR$/src/MainFiles/Zombie.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="242" />
     <option name="y" value="-8" />
     <option name="width" value="974" />
@@ -286,7 +282,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/Git repositories/Zombies/src/jslEngine/jslVector2.java" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544378778151" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544382678541" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Groovy JUnit" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Groovy JUnit" value="groovy.util.GroovyTestCase" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -595,7 +591,7 @@
     <entry file="file://$PROJECT_DIR$/src/MainFiles/Stain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
-          <caret line="15" column="54" lean-forward="true" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
+          <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -653,16 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MainFiles/Zombie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="145" column="27" selection-start-line="145" selection-start-column="27" selection-end-line="145" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MainFiles/PlayerController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
@@ -673,14 +659,14 @@
     <entry file="file://$PROJECT_DIR$/src/jslEngine/jslManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
-          <caret line="131" column="32" lean-forward="true" selection-start-line="131" selection-start-column="32" selection-end-line="131" selection-end-column="32" />
+          <caret line="131" column="32" selection-start-line="131" selection-start-column="32" selection-end-line="131" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainFiles/MainClass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
-          <caret line="109" column="60" lean-forward="true" selection-start-line="109" selection-start-column="60" selection-end-line="109" selection-end-column="60" />
+          <caret line="109" column="60" selection-start-line="109" selection-start-column="60" selection-end-line="109" selection-end-column="60" />
           <folding>
             <element signature="e#4030#4031#0" expanded="true" />
             <element signature="e#4064#4065#0" expanded="true" />
@@ -722,8 +708,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainFiles/LevelManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="60" column="32" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="32" />
+        <state relative-caret-position="406">
+          <caret line="84" column="43" lean-forward="true" selection-start-line="84" selection-start-column="43" selection-end-line="84" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainFiles/Zombie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
