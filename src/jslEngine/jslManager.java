@@ -126,6 +126,13 @@ public class jslManager {
             }
         }
     }
+    public void removeObject(jslLabel l) {
+        for(int i=objects.size()-1; i>=0; i--) {
+            if(getObject(i).is(l)) {
+                removeObject(i);
+            }
+        }
+    }
     public void keyPressed(KeyEvent e) {
         for(jslKeyInput k : keyInputs) {
             k.onPress(e);

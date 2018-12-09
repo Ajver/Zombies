@@ -19,11 +19,11 @@ public class Map {
     private BufferedImage background = Texture.background;
     private BufferedImage ceil = Texture.ceil;
 
-    public Map(jslManager jsl, ArrayList<ZombieSpawner> zombieSpawners) {
-        loadMap("res/map/Map.png", jsl, zombieSpawners);
+    public Map(jslManager jsl, ArrayList<ZombieSpawner> zombieSpawners, ArrayList<ItemSpawner> itemSpawners) {
+        loadMap("res/map/Map.png", jsl, zombieSpawners, itemSpawners);
     }
 
-    public boolean loadMap(String path, jslManager jsl, ArrayList<ZombieSpawner> zombieSpawners) {
+    public boolean loadMap(String path, jslManager jsl, ArrayList<ZombieSpawner> zombieSpawners, ArrayList<ItemSpawner> itemSpawners) {
         try {
             BufferedImage mapImg = ImageIO.read(new File(path));
 
@@ -80,6 +80,7 @@ public class Map {
                         o = new Player(x, y, MainClass.creatureSize, MainClass.creatureSize, jsl);
                     }else if(r == 0 && g == 255 && b == 0) {
                         o = new ItemSpawner(x, y, MainClass.creatureSize, MainClass.creatureSize, jsl);
+                        itemSpawners.add((ItemSpawner)o);
                     }else if(r == 255 && g == 0 && b == 0) {
                         zombieSpawners.add(new ZombieSpawner(x, y, jsl));
                     }else if(r == 255 && g == 255 && b == 0) {

@@ -15,9 +15,6 @@ public class LevelManager {
         // After all zombies in level were killed
         PAUSE,
 
-        // Leave animation
-        LEAVE,
-
         // End of map - leave the game
         END,
 
@@ -37,17 +34,13 @@ public class LevelManager {
     // Break between levels
     private jslTimer pauseTimer;
 
-    // Wait until the leave animation end
-    private jslTimer leaveTimer;
-
     private int level = 0;
 
-    public LevelManager(float start, float end, jslManager jsl) {
+    public LevelManager(float start, jslManager jsl) {
         this.jsl = jsl;
 
         beginTimer = new jslTimer(start);
         pauseTimer = new jslTimer(5.0f);
-        leaveTimer = new jslTimer(end);
 
         beginTimer.start();
     }
@@ -59,34 +52,34 @@ public class LevelManager {
         switch (state) {
             case ENTER:
                 if(beginTimer.update()) {
+                    nextLevel();
                     return state = State.GAME;
                 }
                 break;
             case GAME:
                 if(Zombie.getZombiesNr() <= 0) {
-                    pauseTimer.restart();
-                    return state = State.PAUSE;
+                    if(level < 5) {
+                        pauseTimer.restart();
+                        return state = State.PAUSE;
+                    }else {
+                        return state = State.END;
+                    }
                 }
                 break;
             case PAUSE:
                 if(pauseTimer.update()) {
-                    if(level < 5) {
-                        level++;
-                        Zombie.setZombiesNr(4 + level * 3);
-                        return state = State.GAME;
-                    }else {
-                        return state = State.LEAVE;
-                    }
-                }
-                break;
-            case LEAVE:
-                if(leaveTimer.update()) {
-                    return state = State.END;
+                    nextLevel();
+                    return state = State.GAME;
                 }
                 break;
         }
 
         return State.DEFAULT;
+    }
+
+    private void nextLevel() {
+        level++;
+        Zombie.setZombiesNr(4 + level * 3);
     }
 
     public int getLevel() { return level; }

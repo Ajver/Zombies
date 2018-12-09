@@ -22,8 +22,11 @@ public class MainClass extends jslEngine {
     private LevelManager manager;
 
     private ArrayList<ZombieSpawner> zombieSpawners = new ArrayList<>();
+    private ArrayList<ItemSpawner> itemSpawners = new ArrayList<>();
 
     private jslSound themeMusic;
+
+    private boolean specialData = false;
 
     private MainClass() {
         start("Zombies", WindowType.FULLSCREEN);
@@ -62,7 +65,7 @@ public class MainClass extends jslEngine {
         blockSize = 64;
         creatureSize = 64;
 
-        map = new Map(jsl, zombieSpawners);
+        map = new Map(jsl, zombieSpawners, itemSpawners);
 
         player = (Player)jsl.getObject(jslLabel.PLAYER);
         jsl.add(new PlayerController(player, 350.0f));
@@ -71,7 +74,7 @@ public class MainClass extends jslEngine {
         shotgun = new Shotgun(player, jsl);
 
         Zombie.fillZombies(MainClass.creatureSize, MainClass.creatureSize, jsl);
-        manager = new LevelManager(1.0f, 1.0f, jsl);
+        manager = new LevelManager(5.0f, jsl);
 
         themeMusic = new jslSound("res/sounds/theme.wav");
         themeMusic.setLevel(0.7f);
@@ -100,32 +103,46 @@ public class MainClass extends jslEngine {
                 }
                 break;
             case PAUSE:
+                // Break between levels (NOT game pause)
 
                 break;
-            case LEAVE:
-                // Start leave animation
-                break;
             case END:
-                // End game
+                // Stop item spawners (and remove the items)
+                for(int i=0; i<itemSpawners.size(); i++) {
+                    itemSpawners.get(i).stop();
+                }
+                jsl.removeObject(jslLabel.ITEM);
+
+                // Start leave animation
+
                 break;
         }
     }
 
     protected void beforeRender(Graphics g) {
+        // Clear the screen
         g.setColor(new Color(0, 0, 0));
         g.fillRect(0, 0, WW(), WH());
+
+        // Render background image
         map.render(g);
     }
 
     protected void render(Graphics g) {
         map.renderCeil(g);
-
         HUD.render(g);
 
-        g.setColor(new Color(255, 255,255));
-        g.drawString("FPS: " + getFpsCount(), 20, 50);
-        g.drawString("Level: " + manager.getLevel(), 20, 100);
-        g.drawString("State: " + manager.getState(), 20, 130);
+        // Text rendering
+        g.setColor(new Color(255, 255, 255));
+
+        if(manager.getLevel() != 0) {
+            g.drawString("Level: " + manager.getLevel(), 40, 50);
+        }
+
+        if (specialData) {
+            g.drawString("State: " + manager.getState(), 40, 100);
+            g.drawString("FPS: " + getFpsCount(), 40, 130);
+        }
     }
 
     protected void onMousePressed(MouseEvent e) {
@@ -144,6 +161,12 @@ public class MainClass extends jslEngine {
     protected void onKeyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             System.exit(144);
+        }
+
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_P:
+                specialData = !specialData;
+                break;
         }
     }
 
