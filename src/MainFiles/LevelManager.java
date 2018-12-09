@@ -40,7 +40,7 @@ public class LevelManager {
     // Wait until the leave animation end
     private jslTimer leaveTimer;
 
-    private int level = 1;
+    private int level = 0;
 
     public LevelManager(float start, float end, jslManager jsl) {
         this.jsl = jsl;
@@ -73,7 +73,8 @@ public class LevelManager {
             case PAUSE:
                 if(pauseTimer.update()) {
                     state = State.GAME;
-                    Zombie.fillZombies(MainClass.creatureSize, MainClass.creatureSize, jsl, 5);
+                    level++;
+                    Zombie.fillZombies(MainClass.creatureSize, MainClass.creatureSize, jsl, 4 + level*3);
                     return State.GAME;
                 }
                 break;
