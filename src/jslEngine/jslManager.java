@@ -115,6 +115,12 @@ public class jslManager {
         }
     }
 
+    public void mouseClicked(MouseEvent e) {
+        if(clickedOb != null) {
+            clickedOb.onClick(e);
+        }
+    }
+
     public void mousePressed(MouseEvent e) {
         for(int i=mouseInputs.size()-1; i>=0; i--) {
             jslObject o = mouseInputs.get(i);

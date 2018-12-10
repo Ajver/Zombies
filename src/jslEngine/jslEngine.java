@@ -278,19 +278,23 @@ public abstract class jslEngine extends Canvas implements Runnable, KeyListener,
 
     private void executeEvents() {
         for(int i=0; i<events.size(); i++) {
-            Event e = events.get(i);
+            try {
+                Event e = events.get(i);
 
-            switch (e.type) {
-                case K_PRESS:   onKeyPressed(e.key);       jsl.keyPressed(e.key);       break;
-                case K_RELEASE: onKeyReleased(e.key);      jsl.keyReleased(e.key);      break;
-                case K_TYPE:    onKeyTyped(e.key);         jsl.keyTyped(e.key);         break;
-                case M_ENTER:   onMouseEntered(e.mouse);   break;
-                case M_EXIT:    onMouseExited(e.mouse);    break;
-                case M_CLICK:   onMouseClicked(e.mouse);   break;
-                case M_PRESS:   onMousePressed(e.mouse);   jsl.mousePressed(e.mouse);   break;
-                case M_RELEASE: onMouseReleased(e.mouse);  jsl.mouseReleased(e.mouse);  break;
-                case M_MOVE:    onMouseMoved(e.mouse);     jsl.mouseMoved(e.mouse);     break;
-                case M_DRAG:    onMouseDragged(e.mouse);   jsl.mouseDragged(e.mouse);   break;
+                switch (e.type) {
+                    case K_PRESS:   onKeyPressed(e.key);       jsl.keyPressed(e.key);       break;
+                    case K_RELEASE: onKeyReleased(e.key);      jsl.keyReleased(e.key);      break;
+                    case K_TYPE:    onKeyTyped(e.key);         jsl.keyTyped(e.key);         break;
+                    case M_CLICK:   onMouseClicked(e.mouse);   jsl.mouseClicked(e.mouse);   break;
+                    case M_PRESS:   onMousePressed(e.mouse);   jsl.mousePressed(e.mouse);   break;
+                    case M_RELEASE: onMouseReleased(e.mouse);  jsl.mouseReleased(e.mouse);  break;
+                    case M_MOVE:    onMouseMoved(e.mouse);     jsl.mouseMoved(e.mouse);     break;
+                    case M_DRAG:    onMouseDragged(e.mouse);   jsl.mouseDragged(e.mouse);   break;
+                    case M_ENTER:   onMouseEntered(e.mouse);   break;
+                    case M_EXIT:    onMouseExited(e.mouse);    break;
+                }
+            }catch (Exception e) {
+                e.printStackTrace();
             }
         }
 
