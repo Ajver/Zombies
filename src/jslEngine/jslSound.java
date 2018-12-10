@@ -40,6 +40,9 @@ public class jslSound {
 
     // Play sound continuously
     public void loop() {
+        if(clip == null) {
+            return;
+        }
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
 
@@ -50,11 +53,17 @@ public class jslSound {
 
     // Stop but not end the sound
     public void pause() {
+        if(clip == null) {
+            return;
+        }
         clip.stop();
     }
 
     // End the sound (next time will start from begin)
     public void stop() {
+        if(clip == null) {
+            return;
+        }
         clip.close();
     }
 
@@ -81,6 +90,9 @@ public class jslSound {
     }
 
     public void setLevel(float level) {
+        if(clip == null) {
+            return;
+        }
         this.level = level;
         FloatControl control = (FloatControl)clip.getControl(FloatControl.Type.MASTER_GAIN);
         control.setValue(limit(control,level));
@@ -94,5 +106,10 @@ public class jslSound {
         return Math.min(control.getMaximum(), Math.max(control.getMinimum(), level));
     }
 
-    public boolean isRunning() { return clip.isRunning(); }
+    public boolean isRunning() {
+        if(clip == null) {
+            return false;
+        }
+        return clip.isRunning();
+    }
 }

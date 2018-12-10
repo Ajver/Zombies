@@ -1,6 +1,7 @@
 package MainFiles;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -23,6 +24,20 @@ public class Texture {
 
     public static boolean loadTextures() {
         long start = System.currentTimeMillis();
+
+        BufferedImage defaultImage = new BufferedImage(32, 32, BufferedImage.TYPE_3BYTE_BGR);
+
+        for(int i=0; i<defaultImage.getWidth(); i++) {
+            for(int j=0; j<defaultImage.getWidth(); j++) {
+                defaultImage.setRGB(j, i, 0xE07DD4);
+            }
+        }
+
+        playerImg = zombieImg = itemSpawner = ammoImg = healthImg = background = ceil = defaultImage;
+        for(int i=1; i<=4; i++) {
+            stains[i-1] = defaultImage;
+        }
+
         try {
             playerImg = ImageIO.read(new File("res/img/Player.png"));
             zombieImg = ImageIO.read(new File("res/img/Zombie.png"));
