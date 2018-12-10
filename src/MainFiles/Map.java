@@ -20,7 +20,7 @@ public class Map {
     private BufferedImage ceil = Texture.ceil;
 
     public Map(jslManager jsl, ArrayList<ZombieSpawner> zombieSpawners, ArrayList<ItemSpawner> itemSpawners) {
-        loadMap("res/map/wMap.png", jsl, zombieSpawners, itemSpawners);
+        loadMap("res/map/Map.png", jsl, zombieSpawners, itemSpawners);
     }
 
     public boolean loadMap(String path, jslManager jsl, ArrayList<ZombieSpawner> zombieSpawners, ArrayList<ItemSpawner> itemSpawners) {
