@@ -3,7 +3,6 @@ package MainFiles;
 import jslEngine.jslLabel;
 import jslEngine.jslManager;
 import jslEngine.jslObject;
-import sun.applet.resources.MsgAppletViewer;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
