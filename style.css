@@ -44,3 +44,11 @@ p {
   width: 600px;
   height: 350px;
 }
+
+.page-footer {
+  margin-top: 40px;
+}
+
+.page-footer a {
+  color: #1d751d;
+}
