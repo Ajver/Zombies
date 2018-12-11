@@ -52,10 +52,11 @@ public class MainClass extends jslEngine {
         jsl.setRenderOrder(
                 jslLabel.SPAWNER,
                 jslLabel.GROUND,
-                jslLabel.BULLET,
                 jslLabel.ITEM,
+                jslLabel.BULLET,
                 jslLabel.PLAYER,
                 jslLabel.ZOMBIE,
+                jslLabel.ACID_BULLET,
                 jslLabel.WALL,
                 jslLabel.DOOR,
                 jslLabel.ZOMBIE_HP,
@@ -75,8 +76,7 @@ public class MainClass extends jslEngine {
         Camera.focus(player);
         shotgun = new Shotgun(player, jsl);
 
-        Zombie.fillZombies(MainClass.creatureSize, MainClass.creatureSize, jsl);
-        manager = new LevelManager(5.0f, jsl);
+        manager = new LevelManager(zombieSpawners, jsl);
 
         jslCursor.setCursor("res/img/Crosshair.png");
 

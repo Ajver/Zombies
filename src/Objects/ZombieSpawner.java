@@ -1,5 +1,6 @@
 package Objects;
 
+import MainFiles.LevelManager;
 import jslEngine.jslManager;
 import jslEngine.jslTimer;
 
@@ -19,19 +20,19 @@ public class ZombieSpawner {
         this.y = y;
         this.jsl = jsl;
 
-        nextZombieTimer = new jslTimer(r.nextInt(4) + 1.0f);
+        nextZombieTimer = new jslTimer(r.nextInt(2) + 2.0f);
         nextZombieTimer.start();
     }
 
     public void update() {
         if (nextZombieTimer.update()) {
-            Zombie.newZombie(jsl, x, y);
+            LevelManager.newZombie(x, y, jsl);
             restart();
         }
     }
 
     public void restart() {
-        nextZombieTimer.setDuration(r.nextInt(3) + 3.0f);
+        nextZombieTimer.setDuration(r.nextInt(2) + 2.0f);
         nextZombieTimer.restart();
     }
 

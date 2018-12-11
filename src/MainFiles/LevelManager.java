@@ -1,14 +1,18 @@
 package MainFiles;
 
+import Objects.SpitingZombie;
 import Objects.Zombie;
+import Objects.ZombieSpawner;
 import jslEngine.jslManager;
 import jslEngine.jslTimer;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Random;
 
 public class LevelManager {
 
     public enum State {
-        // Start animation
-        ENTER,
 
         // Normal game (player is killing the zombies)
         GAME,
@@ -25,25 +29,31 @@ public class LevelManager {
     }
 
     // State of the game
-    private State state = State.ENTER;
+    private State state = State.GAME;
 
     private jslManager jsl;
 
-    // Wait until the start animation end
-    private jslTimer beginTimer;
+    private ArrayList<ZombieSpawner> zombieSpawners;
+
+    private static LinkedList<Zombie> zombies = new LinkedList<>();
 
     // Break between levels
     private jslTimer pauseTimer;
 
     private int level = 0;
 
-    public LevelManager(float start, jslManager jsl) {
+    public LevelManager(ArrayList<ZombieSpawner> zombieSpawners, jslManager jsl) {
+        this.zombieSpawners = zombieSpawners;
         this.jsl = jsl;
 
-        beginTimer = new jslTimer(start);
-        pauseTimer = new jslTimer(5.0f);
+        for(int i=0; i<20; i++) {
+            zombies.add(new Zombie(MainClass.creatureSize, MainClass.creatureSize, jsl));
+        }
+        for(int i=0; i<10; i++) {
+            zombies.add(new SpitingZombie(MainClass.creatureSize, MainClass.creatureSize, jsl));
+        }
 
-        beginTimer.start();
+        pauseTimer = new jslTimer(5.0f);
     }
 
     public State update() {
@@ -51,12 +61,6 @@ public class LevelManager {
            If state has been changed, it returns new value. Else it returns DEFAULT state.
          */
         switch (state) {
-            case ENTER:
-                if(beginTimer.update()) {
-                    nextLevel();
-                    return state = State.GAME;
-                }
-                break;
             case GAME:
                 if(Zombie.getZombiesNr() <= 0) {
                     if(level < 5) {
@@ -65,6 +69,8 @@ public class LevelManager {
                     }else {
                         return state = State.END;
                     }
+                }else {
+
                 }
                 break;
             case PAUSE:
@@ -81,6 +87,28 @@ public class LevelManager {
     private void nextLevel() {
         level++;
         Zombie.setZombiesNr(4 + level * 3);
+    }
+
+    public static boolean newZombie(float x, float y, jslManager jsl) {
+        // All zombies are spawned
+        if(zombies.isEmpty()) {
+            return false;
+        }
+
+        // If all zombies, that should be spawned (in this level) are spawned, do not create next
+//        if(zombies.size() + zombiesNr == maxZombies) {
+//            return false;
+//        }
+
+        Zombie z = zombies.remove((new Random()).nextInt(zombies.size()));
+        z.reset(x, y);
+        jsl.add(z);
+
+        return true;
+    }
+
+    public static void addZombie(Zombie z) {
+        zombies.add(z);
     }
 
     public int getLevel() { return level; }

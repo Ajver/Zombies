@@ -2,6 +2,7 @@ package Objects;
 
 import MainFiles.Camera;
 import MainFiles.HUD;
+import MainFiles.LevelManager;
 import MainFiles.Texture;
 import jslEngine.*;
 
@@ -15,16 +16,9 @@ public class Zombie extends jslObject {
     // How many zombies are in this level
     private static int zombiesNr = 0;
 
-    // Max zombies on map in the same place
-    private static int maxZombies = 20;
-
-    // Waiting area
-    // Zombies to spawn (created once, then adding into jslManager)
-    private static LinkedList<Zombie> zombies = new LinkedList<>();
-
-    private BufferedImage texture = Texture.zombieImg;
-    private Player player;
-    private jslManager jsl;
+    protected BufferedImage texture = Texture.zombieImg;
+    protected Player player;
+    protected jslManager jsl;
 
     private CollisionBox collisionBox;
     private ZombieHP hp;
@@ -39,7 +33,8 @@ public class Zombie extends jslObject {
 
     private jslTimer soundTimer;
     private jslSound[] zombieSounds = new jslSound[4];
-    private Random r = new Random();
+
+    protected Random r = new Random();
 
     public Zombie(float w, float h, jslManager jsl) {
         setSize(w, h);
@@ -69,7 +64,7 @@ public class Zombie extends jslObject {
                         stain.setRotate(o.getRotate());
 
                         // Back zombie to waiting area
-                        zombies.add((Zombie)o);
+                        LevelManager.addZombie((Zombie)o);
                         jsl.add(stain);
                         jsl.removeObject(hp);
                         jsl.removeObject(o);
@@ -155,31 +150,6 @@ public class Zombie extends jslObject {
         g.drawImage(texture, (int)getX(), (int)getY(), (int)getW(), (int)getH(),null);
 
         ((Graphics2D)g).rotate(-getRotate(), getX() + getRotateX(), getY() + getRotateY());
-    }
-
-    public static boolean newZombie(jslManager jsl, float x, float y) {
-        // All zombies are spawned
-        if(zombies.isEmpty()) {
-            return false;
-        }
-
-        // If all zombies, that should be spawned (in this level) are spawned, do not create next
-        if(zombies.size() + zombiesNr == maxZombies) {
-            return false;
-        }
-
-        Zombie z = zombies.pop();
-        z.reset(x, y);
-        jsl.add(z);
-
-        return true;
-    }
-
-    public static void fillZombies(float w, float h, jslManager jsl) {
-        // Fill waiting area
-        for(int i=0; i<maxZombies; i++) {
-            zombies.add(new Zombie(w, h, jsl));
-        }
     }
 
     public static int getZombiesNr() { return zombiesNr; }

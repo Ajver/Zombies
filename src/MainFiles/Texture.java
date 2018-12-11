@@ -10,6 +10,7 @@ public class Texture {
 
     public static BufferedImage playerImg = null;
     public static BufferedImage zombieImg = null;
+    public static BufferedImage spitingZombieImg = null;
     public static BufferedImage itemSpawner = null;
 
     public static BufferedImage ammoImg = null;
@@ -33,7 +34,7 @@ public class Texture {
             }
         }
 
-        playerImg = zombieImg = itemSpawner = ammoImg = healthImg = background = ceil = defaultImage;
+        playerImg = zombieImg = spitingZombieImg = itemSpawner = ammoImg = healthImg = background = ceil = defaultImage;
         for(int i=1; i<=4; i++) {
             stains[i-1] = defaultImage;
         }
@@ -41,6 +42,7 @@ public class Texture {
         try {
             playerImg = ImageIO.read(new File("res/img/Player.png"));
             zombieImg = ImageIO.read(new File("res/img/Zombie.png"));
+            spitingZombieImg = defaultImage;
             itemSpawner = ImageIO.read(new File("res/img/ItemSpawner.png"));
 
             ammoImg = ImageIO.read(new File("res/img/Ammo.png"));
