@@ -1,6 +1,9 @@
 package MainFiles;
 
-import jslEngine.jslLabel;
+import Objects.ItemSpawner;
+import Objects.Player;
+import Objects.Wall;
+import Objects.ZombieSpawner;
 import jslEngine.jslManager;
 import jslEngine.jslObject;
 

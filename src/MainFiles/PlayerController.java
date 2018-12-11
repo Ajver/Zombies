@@ -1,5 +1,6 @@
 package MainFiles;
 
+import Objects.Player;
 import jslEngine.jslKeyInput;
 import jslEngine.jslVector2;
 

@@ -1,15 +1,16 @@
 package MainFiles;
 
+import Objects.ItemSpawner;
+import Objects.Player;
+import Objects.Zombie;
+import Objects.ZombieSpawner;
 import jslEngine.*;
 
 import java.awt.event.KeyEvent;
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Random;
 
 public class MainClass extends jslEngine {
 

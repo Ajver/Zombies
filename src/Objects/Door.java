@@ -1,4 +1,4 @@
-package MainFiles;
+package Objects;
 
 import jslEngine.jslLabel;
 import jslEngine.jslObject;

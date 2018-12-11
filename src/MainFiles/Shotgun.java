@@ -1,11 +1,12 @@
 package MainFiles;
 
+import Objects.Bullet;
+import Objects.Player;
 import jslEngine.jslManager;
 import jslEngine.jslSound;
 import jslEngine.jslTimer;
 import jslEngine.jslVector2;
 
-import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class Shotgun {

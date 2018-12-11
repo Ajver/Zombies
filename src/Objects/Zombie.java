@@ -1,5 +1,8 @@
-package MainFiles;
+package Objects;
 
+import MainFiles.Camera;
+import MainFiles.HUD;
+import MainFiles.Texture;
 import jslEngine.*;
 
 import java.awt.*;

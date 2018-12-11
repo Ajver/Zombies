@@ -1,5 +1,6 @@
-package MainFiles;
+package Objects;
 
+import MainFiles.Texture;
 import jslEngine.jslLabel;
 import jslEngine.jslObject;
 import jslEngine.jslTimer;

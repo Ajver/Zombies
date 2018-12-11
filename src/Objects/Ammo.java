@@ -1,5 +1,7 @@
-package MainFiles;
+package Objects;
 
+import MainFiles.HUD;
+import MainFiles.Texture;
 import jslEngine.jslManager;
 import jslEngine.jslSound;
 

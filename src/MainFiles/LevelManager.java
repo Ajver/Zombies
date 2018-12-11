@@ -1,5 +1,6 @@
 package MainFiles;
 
+import Objects.Zombie;
 import jslEngine.jslManager;
 import jslEngine.jslTimer;
 

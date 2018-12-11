@@ -1,4 +1,4 @@
-package MainFiles;
+package Objects;
 
 import jslEngine.jslManager;
 import jslEngine.jslObject;

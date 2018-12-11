@@ -1,7 +1,6 @@
-package MainFiles;
+package Objects;
 
 import jslEngine.jslManager;
-import jslEngine.jslObject;
 import jslEngine.jslTimer;
 
 import java.util.Random;
