@@ -8,13 +8,9 @@ import jslEngine.*;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.LinkedList;
 import java.util.Random;
 
 public class Zombie extends jslObject {
-
-    // How many zombies are in this level
-    private static int zombiesNr = 0;
 
     protected BufferedImage texture = Texture.zombieImg;
     protected Player player;
@@ -58,8 +54,6 @@ public class Zombie extends jslObject {
                     // Remove bullet
                     jsl.removeObject(other);
                     if (!hp.addHp(-13 - r.nextInt(20))) {
-                        zombiesNr--;
-
                         Stain stain = new Stain(o.getX(), o.getY(), o.getW(), o.getH());
                         stain.setRotate(o.getRotate());
 
@@ -151,7 +145,4 @@ public class Zombie extends jslObject {
 
         ((Graphics2D)g).rotate(-getRotate(), getX() + getRotateX(), getY() + getRotateY());
     }
-
-    public static int getZombiesNr() { return zombiesNr; }
-    public static void setZombiesNr(int nr) { zombiesNr = nr; }
 }

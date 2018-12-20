@@ -35,7 +35,14 @@ public class LevelManager {
 
     private ArrayList<ZombieSpawner> zombieSpawners;
 
+    // Zombies waiting area
     private static LinkedList<Zombie> zombies = new LinkedList<>();
+
+    // How many zombies should be now in map
+    private static int zombiesCounter = 0;
+
+    // How many zombies are currently walking in map
+    private static int walkingZombies = 0;
 
     // Break between levels
     private jslTimer pauseTimer;
@@ -62,15 +69,17 @@ public class LevelManager {
          */
         switch (state) {
             case GAME:
-                if(Zombie.getZombiesNr() <= 0) {
-                    if(level < 5) {
-                        pauseTimer.restart();
-                        return state = State.PAUSE;
-                    }else {
-                        return state = State.END;
+                // All zombies die
+                if(walkingZombies == 0) {
+                    // There is no more zombie to spawn
+                    if (zombiesCounter == 0) {
+                        if (level < 5) {
+                            pauseTimer.restart();
+                            return state = State.PAUSE;
+                        } else {
+                            return state = State.END;
+                        }
                     }
-                }else {
-
                 }
                 break;
             case PAUSE:
@@ -86,28 +95,37 @@ public class LevelManager {
 
     private void nextLevel() {
         level++;
-        Zombie.setZombiesNr(4 + level * 3);
+
+        // Set the maximum value of zombies in this levelw
+        zombiesCounter = 4 + level * 3;
     }
 
     public static boolean newZombie(float x, float y, jslManager jsl) {
         // All zombies are spawned
-        if(zombies.isEmpty()) {
-            return false;
+        if(!zombies.isEmpty()) {
+
+            // If there may be spawned new zombie in this level
+            if(zombiesCounter > 0) {
+                zombiesCounter--;
+
+                Zombie z = zombies.remove((new Random()).nextInt(zombies.size()));
+                z.reset(x, y);
+                jsl.add(z);
+
+                // New walking zombie!
+                walkingZombies++;
+
+                return true;
+            }
         }
 
-        // If all zombies, that should be spawned (in this level) are spawned, do not create next
-//        if(zombies.size() + zombiesNr == maxZombies) {
-//            return false;
-//        }
-
-        Zombie z = zombies.remove((new Random()).nextInt(zombies.size()));
-        z.reset(x, y);
-        jsl.add(z);
-
-        return true;
+        return false;
     }
 
+    // When player killed some zombie
     public static void addZombie(Zombie z) {
+        // One walking zombie less...
+        walkingZombies--;
         zombies.add(z);
     }
 
