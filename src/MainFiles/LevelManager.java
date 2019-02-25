@@ -96,7 +96,7 @@ public class LevelManager {
     private void nextLevel() {
         level++;
 
-        // Set the maximum value of zombies in this levelw
+        // Set the maximum value of zombies in this level
         zombiesCounter = 4 + level * 3;
     }
 
